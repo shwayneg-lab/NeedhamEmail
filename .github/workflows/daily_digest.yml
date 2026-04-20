@@ -1,0 +1,91 @@
+name: Daily Digest
+
+on:
+  schedule:
+    # 7:00 AM ET — 11:00 UTC during EDT (Mar-Nov), 12:00 UTC during EST (Nov-Mar)
+    - cron: '0 11 * * 1-5'
+    - cron: '0 12 * * 1-5'
+    # 5:30 PM ET — 21:30 UTC during EDT, 22:30 UTC during EST
+    - cron: '30 21 * * 1-5'
+    - cron: '30 22 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Run mode
+        type: choice
+        default: morning
+        options: [morning, closing]
+      skip_time_check:
+        description: Ignore the 7am/5:30pm ET gating (for manual test runs)
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve mode
+        run: |
+          if [ -n "${{ inputs.mode }}" ]; then
+            echo "DIGEST_MODE=${{ inputs.mode }}" >> $GITHUB_ENV
+          else
+            HOUR=$(date -u +%H)
+            if [ "$HOUR" -lt 18 ]; then
+              echo "DIGEST_MODE=morning" >> $GITHUB_ENV
+            else
+              echo "DIGEST_MODE=closing" >> $GITHUB_ENV
+            fi
+          fi
+          if [ "${{ inputs.skip_time_check }}" = "true" ]; then
+            echo "DIGEST_SKIP_TIME_CHECK=1" >> $GITHUB_ENV
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Run digest
+        env:
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          DIGEST_FROM_EMAIL: ${{ secrets.DIGEST_FROM_EMAIL }}
+          DIGEST_TO_EMAIL: ${{ secrets.DIGEST_TO_EMAIL }}
+        run: python -m src.main
+
+      - name: Commit state + pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state/ docs/
+          git diff --staged --quiet || git commit -m "chore: update state + pages [skip ci]"
+          git push
+
+      - uses: actions/configure-pages@v4
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

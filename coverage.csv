@@ -1,0 +1,493 @@
+ticker,company_name,analyst,sector
+ADTN,"ADTRAN, Inc.",Ryan Koontz,Communication Infrastructure
+AUDC,AudioCodes Ltd.,Joshua Reilly,Communication Infrastructure
+CALX,"Calix, Inc.",Ryan Koontz,Communication Infrastructure
+CLFD,"Clearfield, Inc.",Ryan Koontz,Communication Infrastructure
+GILT,Gilat Satellite Networks,Ryan Koontz,Communication Infrastructure
+HLIT,Harmonic Inc.,Ryan Koontz,Communication Infrastructure
+LTRX,"Lantronix, Inc.",Ryan Koontz,Communication Infrastructure
+NSSC,"NAPCO Security Technologies, Inc.",James Ricchiuti,Communication Infrastructure
+ALLT,Allot Ltd.,Matthew Calitri,Networking/Optical
+ANET,Arista Networks Inc.,Ryan Koontz,Networking/Optical
+CRNT,Ceragon Networks Ltd.,Ryan Koontz,Networking/Optical
+EXTR,"Extreme Networks, Inc.",Ryan Koontz,Networking/Optical
+FFIV,F5 Inc.,Ryan Koontz,Networking/Optical
+FN,Fabrinet,Ryan Koontz,Networking/Optical
+LITE,"Lumentum Holdings, Inc.",Ryan Koontz,Networking/Optical
+RDCM,RADCOM Ltd.,Ryan Koontz,Networking/Optical
+SILC,Silicom Ltd.,Ryan Koontz,Networking/Optical
+VIAV,Viavi Solutions Inc.,Ryan Koontz,Networking/Optical
+COLM,Columbia Sportswear Co.,Tom Nikic,Apparel & Footwear
+CROX,Crocs,Tom Nikic,Apparel & Footwear
+DECK,Deckers Outdoor Corporation,Tom Nikic,Apparel & Footwear
+LEVI,Levi Strauss and Co.,Tom Nikic,Apparel & Footwear
+LULU,"Lululemon Athletica, Inc.",Tom Nikic,Apparel & Footwear
+NKE,"NIKE, Inc.",Tom Nikic,Apparel & Footwear
+PVH,PVH Corp,Tom Nikic,Apparel & Footwear
+RL,Ralph Lauren Corporation,Tom Nikic,Apparel & Footwear
+SHOO,Steven Madden,Tom Nikic,Apparel & Footwear
+UAA,"Under Armour, Inc.",Tom Nikic,Apparel & Footwear
+VFC,V. F. Corporation,Tom Nikic,Apparel & Footwear
+SAM,Boston Beer Company,Gerald Pascarelli,Beverages
+BF-B,Brown Forman,Gerald Pascarelli,Beverages
+CELH,Celsius Holdings,Gerald Pascarelli,Beverages
+STZ,Constellation Brands,Gerald Pascarelli,Beverages
+TAP,Molson Coors Beverage Company,Gerald Pascarelli,Beverages
+MNST,Monster Beverage Corporation,Gerald Pascarelli,Beverages
+COCO,Vita Coco Company,Gerald Pascarelli,Beverages
+VITL,"Vital Farms, Inc.",Gerald Pascarelli,Consumer Health & Wellness
+MO,Altria Group,Gerald Pascarelli,Tobacco
+PM,Philip Morris International,Gerald Pascarelli,Tobacco
+TPB,Turning Point Brands,Gerald Pascarelli,Tobacco
+BTDR,Bitdeer Technologies,John Todaro,Cryptoasset/Blockchain
+CIFR,Cipher Mining,John Todaro,Cryptoasset/Blockchain
+CRCL,Circle Internet Group,John Todaro,Cryptoasset/Blockchain
+CLSK,"Cleanspark, Inc.",John Todaro,Cryptoasset/Blockchain
+CORZ,Core Scientific,John Todaro,Cryptoasset/Blockchain
+ETOR,eToro,John Todaro,Cryptoasset/Blockchain
+GEMI,"Gemini Space Station, Inc.",John Todaro,Cryptoasset/Blockchain
+HUT,Hut8 Corp.,John Todaro,Cryptoasset/Blockchain
+IREN,Iris Energy,John Todaro,Cryptoasset/Blockchain
+MARA,Marathon Digital Holdings Inc,John Todaro,Cryptoasset/Blockchain
+RIOT,Riot Platforms,John Todaro,Cryptoasset/Blockchain
+HOOD,Robinhood Markets,John Todaro,Cryptoasset/Blockchain
+STEX,Streamex Corp.,John Todaro,Cryptoasset/Blockchain
+WULF,TeraWulf,John Todaro,Cryptoasset/Blockchain
+WYFI,WhiteFiber,John Todaro,Cryptoasset/Blockchain
+ABSI,Absci Corporation,Gil Blum,Biotechnology
+ACAD,ACADIA Pharmaceuticals Inc.,Ami Fadia,Biotechnology
+ALNY,"Alnylam Pharmaceuticals, Inc.",Joseph Stringer,Biotechnology
+ALKS,Alkermes Public Limited Company,Ami Fadia,Biotechnology
+FOLD,"Amicus Therapeutics, Inc.",Gil Blum,Biotechnology
+AMPH,"Amphastar Pharmaceuticals, Inc.",Serge Belanger,Biotechnology
+ANNX,Annexon,Joseph Stringer,Biotechnology
+APLS,Apellis Pharmaceuticals,Joseph Stringer,Biotechnology
+ACLX,"Arcellx, Inc.",Gil Blum,Biotechnology
+ARQT,Arcutis Biotherapeutics Inc,Serge Belanger,Biotechnology
+ARTV,Artiva Biotherapeutics,Gil Blum,Biotechnology
+ATAI,ATAI Life Sciences N.V.,Ami Fadia,Biotechnology
+AUTL,Autolus Therapeutics,Gil Blum,Biotechnology
+AXSM,"Axsome Therapeutics, Inc.",Ami Fadia,Biotechnology
+BCYC,Bicycle Therapeutics Plc,Ami Fadia,Biotechnology
+BIOA,BioAge Labs,Joseph Stringer,Biotechnology
+BCRX,"BioCryst Pharmaceuticals, Inc.",Serge Belanger,Biotechnology
+BIIB,Biogen Inc.,Ami Fadia,Biotechnology
+RNAC,"Cartesian Therapeutics, Inc.",Gil Blum,Biotechnology
+CELC,Celcuity Inc.,Gil Blum,Biotechnology
+CNTA,Centessa Pharmaceuticals,Ami Fadia,Biotechnology
+CLSD,"Clearside Biomedical, Inc.",Serge Belanger,Biotechnology
+COGT,"Cogent Biosciences, Inc.",Ami Fadia,Biotechnology
+COLL,"Collegium Pharmaceutical, Inc.",Serge Belanger,Biotechnology
+CRMD,CorMedix Inc.,Serge Belanger,Biotechnology
+CRSP,CRISPR Therapeutics,Gil Blum,Biotechnology
+CYTK,"Cytokinetics, Inc.",Serge Belanger,Biotechnology
+DAWN,"Day One Biopharmaceuticals, Inc.",Ami Fadia,Biotechnology
+ESPR,"Esperion Therapeutics, Inc.",Serge Belanger,Biotechnology
+EOLS,"Evolus, Inc.",Serge Belanger,Biotechnology
+FATE,"Fate Therapeutics, Inc.",Gil Blum,Biotechnology
+GERN,Geron Corporation,Gil Blum,Biotechnology
+GHRS,GH Research Plc,Ami Fadia,Biotechnology
+GILD,Gilead Sciences Inc.,Joseph Stringer,Biotechnology
+HRMY,"Harmony Biosciences Holdings, Inc.",Ami Fadia,Biotechnology
+HRTX,"Heron Therapeutics, Inc.",Serge Belanger,Biotechnology
+IMRX,Immuneering Corp.,Ami Fadia,Biotechnology
+IMCR,Immunocore Holdings Plc,Gil Blum,Biotechnology
+IONS,"Ionis Pharmaceuticals, Inc.",Joseph Stringer,Biotechnology
+JAZZ,Jazz Pharmaceuticals,Ami Fadia,Biotechnology
+KALV,KalVista Pharmaceuticals Inc,Serge Belanger,Biotechnology
+LQDA,"Liquidia Technologies, Inc.",Serge Belanger,Biotechnology
+LYEL,Lyell Immunopharma,Gil Blum,Biotechnology
+MPLT,"MapLight Therapeutics, Inc.",Ami Fadia,Biotechnology
+MREO,Mereo BioPharma Group plc,Gil Blum,Biotechnology
+MRNA,"Moderna, Inc.",Joseph Stringer,Biotechnology
+MLTX,MoonLake Immunotherapeutics,Serge Belanger,Biotechnology
+NMRA,"Neumora Therapeutics, Inc.",Ami Fadia,Biotechnology
+NBIX,"Neurocrine Biosciences, Inc.",Ami Fadia,Biotechnology
+NAMS,NewAmsterdam Pharma Company N.V.,Serge Belanger,Biotechnology
+NKTX,"Nkarta, Inc.",Gil Blum,Biotechnology
+NRIX,Nurix Therapeutics,Gil Blum,Biotechnology
+OCUL,Ocular Therapeutix Inc.,Serge Belanger,Biotechnology
+OCS,Oculis Holding AG,Serge Belanger,Biotechnology
+OMER,Omeros Corp.,Serge Belanger,Biotechnology
+PCRX,"Pacira Biosciences, Inc.",Serge Belanger,Biotechnology
+PHM-ES,Pharma Mar SA,Ami Fadia,Biotechnology
+PHAT,Phathom Pharmaceuticals,Joseph Stringer,Biotechnology
+PLRX,"Pliant Therapeutics, Inc.",Joseph Stringer,Biotechnology
+PRAX,Praxis Precision Medicines,Ami Fadia,Biotechnology
+RXRX,Recursion Pharmaceuticals,"Gil Blum, Ryan MacDonald",Biotechnology
+RVMD,"Revolution Medicines, Inc.",Ami Fadia,Biotechnology
+RYTM,"Rhythm Pharmaceuticals, Inc.",Joseph Stringer,Biotechnology
+RCKT,Rocket Pharmaceuticals,Gil Blum,Biotechnology
+SRPT,"Sarepta Therapeutics, Inc.",Gil Blum,Biotechnology
+STTK,"Shattuck Labs, Inc.",Joseph Stringer,Biotechnology
+SLDB,Solid Biosciences Inc.,Gil Blum,Biotechnology
+STOK,Stoke Therapeutics,Joseph Stringer,Biotechnology
+TSHA,Taysha Gene Therapies,Gil Blum,Biotechnology
+TRVI,Trevi Therapeutics,Serge Belanger,Biotechnology
+TCRX,TScan Therapeutics,Gil Blum,Biotechnology
+PCVX,"Vaxcyte, Inc.",Joseph Stringer,Biotechnology
+VRCA,Verrica Pharmaceuticals Inc.,Serge Belanger,Biotechnology
+VRTX,"Vertex Pharmaceuticals, Inc.",Joseph Stringer,Biotechnology
+VIR,"Vir Biotechnology, Inc.",Joseph Stringer,Biotechnology
+VRDN,"Viridian Therapeutics, Inc.",Serge Belanger,Biotechnology
+XENE,Xenon Pharmaceuticals Inc.,Serge Belanger,Biotechnology
+ALC,Alcon AG,David Saxon,Med Tech & Diagnostics
+ALGN,"Align Technology, Inc.",David Saxon,Med Tech & Diagnostics
+ATEC,"Alphatec Holdings, Inc.",David Saxon,Med Tech & Diagnostics
+AORT,"Artivion, Inc.",Mike Matson,Med Tech & Diagnostics
+ATRC,"AtriCure, Inc.",Mike Matson,Med Tech & Diagnostics
+AZTA,"Azenta, Inc.",David Saxon,Med Tech & Diagnostics
+BLCO,Bausch + Lomb Corporation,David Saxon,Med Tech & Diagnostics
+BSX,Boston Scientific Corporation,Mike Matson,Med Tech & Diagnostics
+CNMD,CONMED Corporation,Mike Matson,Med Tech & Diagnostics
+COO,"Cooper Companies, Inc.",David Saxon,Med Tech & Diagnostics
+CYRX,"CryoPort, Inc.",David Saxon,Med Tech & Diagnostics
+XRAY,"DENTSPLY SIRONA, Inc.",David Saxon,Med Tech & Diagnostics
+ENOV,Enovis Corporation,Mike Matson,Med Tech & Diagnostics
+NVST,Envista Holdings Corp.,David Saxon,Med Tech & Diagnostics
+ESTA,"Establishment Labs Holdings, Inc.",Mike Matson,Med Tech & Diagnostics
+GKOS,Glaukos Corp,David Saxon,Med Tech & Diagnostics
+GMED,"Globus Medical, Inc.",David Saxon,Med Tech & Diagnostics
+HAE,Haemonetics,Mike Matson,Med Tech & Diagnostics
+ICUI,"ICU Medical, Inc.",Mike Matson,Med Tech & Diagnostics
+INMD,InMode Ltd.,Mike Matson,Med Tech & Diagnostics
+INGN,"Inogen, Inc.",Mike Matson,Med Tech & Diagnostics
+IRTC,iRhythm Technologies,David Saxon,Med Tech & Diagnostics
+LIVN,LivaNova plc,Mike Matson,Med Tech & Diagnostics
+LUCD,Lucid Diagnostics Inc.,Mike Matson,Med Tech & Diagnostics
+MASI,Masimo Corporation,Mike Matson,Med Tech & Diagnostics
+MDT,Medtronic plc,Mike Matson,Med Tech & Diagnostics
+MMSI,"Merit Medical Systems, Inc.",Mike Matson,Med Tech & Diagnostics
+NEO,"NeoGenomics, Inc.",Mike Matson,Med Tech & Diagnostics
+KIDS,OrthoPediatrics Corp.,Mike Matson,Med Tech & Diagnostics
+PEN,"Penumbra, Inc.",Mike Matson,Med Tech & Diagnostics
+PSNL,"Personalis, Inc.",Mike Matson,Med Tech & Diagnostics
+RMD,ResMed Inc.,Mike Matson,Med Tech & Diagnostics
+RXST,"RxSight, Inc.",David Saxon,Med Tech & Diagnostics
+SIBN,"SI-BONE, Inc.",David Saxon,Med Tech & Diagnostics
+SGHT,"Sight Sciences, Inc.",David Saxon,Med Tech & Diagnostics
+STAA,STAAR Surgical Company,David Saxon,Med Tech & Diagnostics
+STE,STERIS Plc,Mike Matson,Med Tech & Diagnostics
+SYK,Stryker Corp.,Mike Matson,Med Tech & Diagnostics
+TFX,Teleflex Inc.,Mike Matson,Med Tech & Diagnostics
+TMDX,TransMedics Group,Mike Matson,Med Tech & Diagnostics
+VCYT,"Veracyte, Inc.",Mike Matson,Med Tech & Diagnostics
+ZBH,"Zimmer Biomet Holdings, Inc.",Mike Matson,Med Tech & Diagnostics
+DDD,3D Systems Corp.,James Ricchiuti,Advanced Industrial Tech
+AEIS,"Advanced Energy Industries, Inc.",James Ricchiuti,Advanced Industrial Tech
+BHE,"Benchmark Electronics, Inc.",James Ricchiuti,Advanced Industrial Tech
+CGNX,Cognex Corporation,James Ricchiuti,Advanced Industrial Tech
+COHR,Coherent Corp.,Ryan Koontz,Advanced Industrial Tech
+FARO,"FARO Technologies, Inc.",James Ricchiuti,Advanced Industrial Tech
+FATH,Fathom Digital Manufacturing Corp,James Ricchiuti,Advanced Industrial Tech
+PI,"Impinj, Inc.",James Ricchiuti,Advanced Industrial Tech
+IPGP,IPG Photonics Corp.,James Ricchiuti,Advanced Industrial Tech
+KRNT,Kornit Digital Ltd.,James Ricchiuti,Advanced Industrial Tech
+MKSI,"MKS Instruments, Inc.",James Ricchiuti,Advanced Industrial Tech
+LASR,"nLIGHT, Inc.",James Ricchiuti,Advanced Industrial Tech
+PLXS,Plexus Corp.,James Ricchiuti,Advanced Industrial Tech
+PRLB,Proto Labs Inc.,James Ricchiuti,Advanced Industrial Tech
+SSYS,Stratasys Ltd.,James Ricchiuti,Advanced Industrial Tech
+SYM,Symbotic Inc.,James Ricchiuti,Advanced Industrial Tech
+TDY,Teledyne Technologies Inc.,James Ricchiuti,Advanced Industrial Tech
+TTMI,"TTM Technologies, Inc.",James Ricchiuti,Advanced Industrial Tech
+OLED,Universal Display Corporation,James Ricchiuti,Advanced Industrial Tech
+ZBRA,Zebra Technologies Corp.,James Ricchiuti,Advanced Industrial Tech
+BELFB,Bel Fuse Inc.,James Ricchiuti,EMS/IT Components
+CECO,CECO Environmental Corp.,James Ricchiuti,Environmental Tech
+CLH,"Clean Harbors, Inc.",James Ricchiuti,Environmental Tech
+MEG,"Montrose Environmental Group, Inc.",James Ricchiuti,Environmental Tech
+AVAV,AeroVironment,Austin Bohlig,Drones & Defense Tech
+AMPX,Amprius Technology,Austin Bohlig,Drones & Defense Tech
+DPRO,Draganfly,Austin Bohlig,Drones & Defense Tech
+KRMN,Karman Holdings Inc.,Austin Bohlig,Drones & Defense Tech
+ONDS,Ondas Holdings,Austin Bohlig,Drones & Defense Tech
+UMAC,Unusual Machines,Austin Bohlig,Drones & Defense Tech
+RCAT,Red Cat Holdings Inc,Austin Bohlig,Drones & Defense Tech
+LEU,Centrus Energy Corp.,Sean Milligan,Power/Energy/Infrastructure
+FSLR,"First Solar, Inc.",Sean Milligan,Power/Energy/Infrastructure
+FLNC,"Fluence Energy, Inc.",Sean Milligan,Power/Energy/Infrastructure
+GNRC,Generac Holdings,Sean Milligan,Power/Energy/Infrastructure
+ITRI,"Itron, Inc.",Sean Milligan,Power/Energy/Infrastructure
+NXT,Nextracker Inc.,Sean Milligan,Power/Energy/Infrastructure
+OKLO,Oklo Inc.,Sean Milligan,Power/Energy/Infrastructure
+PRIM,Primoris Services Corporation,Sean Milligan,Power/Energy/Infrastructure
+SHLS,"Shoals Technologies Group, Inc.",Sean Milligan,Power/Energy/Infrastructure
+TE,T1 Energy Inc.,Sean Milligan,Power/Energy/Infrastructure
+DV,"DoubleVerify Holdings, Inc.",Laura Martin,Digital Advertising
+MGNI,"Magnite, Inc.",Laura Martin,Digital Advertising
+MNTN,"MNTN, Inc.",Laura Martin,Digital Advertising
+NEXN,Nexxen,Laura Martin,Digital Advertising
+PERI,Perion Network Ltd.,Laura Martin,Digital Advertising
+STGW,"Stagwell, Inc.",Laura Martin,Digital Advertising
+TBLA,Taboola,Laura Martin,Digital Advertising
+TEAD,Teads Holding Co.,Laura Martin,Digital Advertising
+TTD,"theTradeDesk, Inc.",Laura Martin,Digital Advertising
+DSP,"Viant Technology, Inc.",Laura Martin,Digital Advertising
+GOOGL,Alphabet Inc. Class A,Laura Martin,Content Creators
+AMZN,"Amazon.com, Inc.",Laura Martin,Content Creators
+AAPL,Apple Inc.,Laura Martin,Content Creators
+CURI,CuriosityStream Inc,Laura Martin,Content Creators
+DIS,Disney (Walt) Co.,Laura Martin,Content Creators
+FUBO,fuboTV Inc.,Laura Martin,Content Creators
+META,Meta Platforms Inc.,Laura Martin,Content Creators
+NFLX,"Netflix, Inc.",Laura Martin,Content Creators
+PSKY,Paramount Skydance Corporation,Laura Martin,Content Creators
+RDDT,"Reddit, Inc.",Laura Martin,Content Creators
+ROKU,"Roku, Inc.",Laura Martin,Content Creators
+WBD,"Warner Bros. Discovery, Inc.",Laura Martin,Content Creators
+ONON,On Holding AG,Tom Nikic,Ecommerce & Global Brands
+ACVA,ACV Auctions,Chris Pierce,Internet Services
+ABNB,"Airbnb, Inc.",Bernie McTernan,Internet Services
+APP,AppLovin Corp.,Bernie McTernan,Internet Services
+BBBY,Bed Bath & Beyond,Bernie McTernan,Internet Services
+CHWY,"Chewy, Inc. Class A",Bernie McTernan,Internet Services
+COMP,Compass Inc Class A,Bernie McTernan,Internet Services
+DASH,"DoorDash, Inc.",Bernie McTernan,Internet Services
+DKNG,DraftKings Inc Class A,Bernie McTernan,Internet Services
+EBAY,eBay Inc.,Bernie McTernan,Internet Services
+ETSY,"Etsy, Inc.",Bernie McTernan,Internet Services
+FVRR,Fiverr International Ltd.,Bernie McTernan,Internet Services
+FLUT,Flutter Entertainment Plc,Bernie McTernan,Internet Services
+GENI,Genius Sports Limited,Bernie McTernan,Internet Services
+IBTA,"Ibotta, Inc.",Bernie McTernan,Internet Services
+CART,Instacart,Bernie McTernan,Internet Services
+LYFT,LYFT Inc.,Bernie McTernan,Internet Services
+PTRN,"Pattern Group, Inc.",Bernie McTernan,Internet Services
+PTON,"Peloton Interactive, Inc.",Bernie McTernan,Internet Services
+PENN,"PENN Entertainment, Inc.",Bernie McTernan,Internet Services
+RBLX,Roblox Corp.,Bernie McTernan,Internet Services
+RSI,"Rush Street Interactive, Inc.",Bernie McTernan,Internet Services
+SSTK,"Shutterstock, Inc.",Bernie McTernan,Internet Services
+SRAD,Sportradar Group AG,Bernie McTernan,Internet Services
+SGHC,Super Group,Bernie McTernan,Internet Services
+TDUP,"thredUP, Inc. Class A",Bernie McTernan,Internet Services
+UBER,"Uber Technologies, Inc.",Bernie McTernan,Internet Services
+U,"Unity Software, Inc.",Bernie McTernan,Internet Services
+UPWK,Upwork,Bernie McTernan,Internet Services
+W,"Wayfair, Inc.",Bernie McTernan,Internet Services
+WIX,Wix.com Ltd.,Bernie McTernan,Internet Services
+Z,"Zillow Group, Inc. (Cl C)",Bernie McTernan,Internet Services
+AKAM,"Akamai Technologies, Inc.",Mike Cikos,Security Technology
+BLZE,"Backblaze, Inc.",Mike Cikos,Security Technology
+CLBT,Cellebrite DI Ltd.,Mike Cikos,Security Technology
+CHKP,Check Point Software Technologies Ltd.,Mike Cikos,Security Technology
+NET,Cloudflare Inc.,Mike Cikos,Security Technology
+CGNT,Cognyte Software Ltd.,Matthew Calitri,Security Technology
+CRWD,"CrowdStrike Holdings, Inc.",Mike Cikos,Security Technology
+FTNT,"Fortinet, Inc.",Mike Cikos,Security Technology
+NABL,"N-able, Inc.",Mike Cikos,Security Technology
+OKTA,"Okta, Inc.",Mike Cikos,Security Technology
+PANW,"Palo Alto Networks, Inc.",Mike Cikos,Security Technology
+QLYS,"Qualys, Inc.",Mike Cikos,Security Technology
+RDWR,Radware Ltd.,Ryan Koontz,Security Technology
+RPD,"Rapid7, Inc.",Mike Cikos,Security Technology
+S,"SentinelOne, Inc.",Mike Cikos,Security Technology
+TENB,Tenable Holdings,Mike Cikos,Security Technology
+VRNS,"Varonis Systems, Inc.",Mike Cikos,Security Technology
+ZS,"Zscaler, Inc.",Mike Cikos,Security Technology
+CRWV,"CoreWeave, Inc.","John Todaro, Mike Cikos",AI Infrastructure
+SMCI,"Super Micro Computer, Inc.",N. Quinn Bolton,AI Infrastructure
+ADI,"Analog Devices, Inc.",N. Quinn Bolton,Analog/Mixed Signal
+MTSI,MACOM Technology Solutions,N. Quinn Bolton,Analog/Mixed Signal
+MCHP,"Microchip Technology, Inc.",N. Quinn Bolton,Analog/Mixed Signal
+MPWR,"Monolithic Power Systems, Inc.",N. Quinn Bolton,Analog/Mixed Signal
+NVTS,Navitas Semiconductor Corporation,N. Quinn Bolton,Analog/Mixed Signal
+NXPI,NXP Semiconductors N.V.,N. Quinn Bolton,Analog/Mixed Signal
+ON,ON Semiconductor Corporation,N. Quinn Bolton,Analog/Mixed Signal
+SMTC,Semtech Corporation,N. Quinn Bolton,Analog/Mixed Signal
+SITM,SiTime Corp,N. Quinn Bolton,Analog/Mixed Signal
+VICR,Vicor Corporation,N. Quinn Bolton,Analog/Mixed Signal
+ALGM,"Allegro MicroSystems, Inc.",N. Quinn Bolton,Automotive/ADAS
+AMBA,"Ambarella, Inc.",N. Quinn Bolton,Automotive/ADAS
+MBLY,Mobileye,N. Quinn Bolton,Automotive/ADAS
+MXL,"MaxLinear, Inc.",N. Quinn Bolton,Broadband/IoT
+SLAB,Silicon Laboratories Inc.,N. Quinn Bolton,Broadband/IoT
+SIMO,Silicon Motion Technology Corporation,Neil Young,Broadband/IoT
+SYNA,Synaptics Inc.,Neil Young,Broadband/IoT
+ALAB,"Astera Labs, Inc.",N. Quinn Bolton,Communication ICs
+CRDO,Credo Technology Group Holding Ltd.,N. Quinn Bolton,Communication ICs
+LSCC,Lattice Semiconductor Corporation,N. Quinn Bolton,Communication ICs
+MRVL,Marvell Technology Group Ltd.,N. Quinn Bolton,Communication ICs
+VLN,Valens Semiconductor Ltd.,N. Quinn Bolton,Communication ICs
+ARM,Arm Holdings plc,Charles Shi,Design Software
+CDNS,"Cadence Design Systems, Inc.",Charles Shi,Design Software
+SVCO,"Silvaco Group, Inc.",Charles Shi,Design Software
+SNPS,"Synopsys, Inc.",Charles Shi,Design Software
+AMKR,"Amkor Technology, Inc.",Charles Shi,Foundry & OSAT
+TSM,Taiwan Semiconductor Manufacturing Co.,Charles Shi,Foundry & OSAT
+MRAM,"Everspin Technologies, Inc.",Neil Young,Memory
+MU,"Micron Technology, Inc.",N. Quinn Bolton,Memory
+PENG,"Penguin Solutions, Inc.",Matthew Calitri,Memory
+AMBQ,"Ambiq Micro, Inc.",N. Quinn Bolton,Processors/AI
+INTC,Intel Corporation,N. Quinn Bolton,Processors/AI
+NVDA,NVIDIA Corporation,N. Quinn Bolton,Processors/AI
+QBTS,D-Wave Quantum Inc.,N. Quinn Bolton,Quantum Computing
+IONQ,"IonQ, Inc.",N. Quinn Bolton,Quantum Computing
+RGTI,"Rigetti Computing, Inc.",N. Quinn Bolton,Quantum Computing
+ACMR,"ACM Research, Inc.",Charles Shi,Semi Equipment & Materials
+AMAT,"Applied Materials, Inc.",Charles Shi,Semi Equipment & Materials
+ACLS,"Axcelis Technologies, Inc.",Charles Shi,Semi Equipment & Materials
+AXTI,"AXT, Inc.",Charles Shi,Semi Equipment & Materials
+BESI-NL,BE Semiconductor Industries N.V.,Charles Shi,Semi Equipment & Materials
+CAMT,Camtek Ltd.,Charles Shi,Semi Equipment & Materials
+COHU,"Cohu, Inc.",Charles Shi,Semi Equipment & Materials
+ENTG,"Entegris, Inc.",Charles Shi,Semi Equipment & Materials
+FORM,"FormFactor, Inc.",Charles Shi,Semi Equipment & Materials
+ICHR,"Ichor Holdings, Ltd.",Charles Shi,Semi Equipment & Materials
+KLAC,KLA Corporation,Charles Shi,Semi Equipment & Materials
+KLIC,"Kulicke & Soffa Industries, Inc.",Charles Shi,Semi Equipment & Materials
+LRCX,Lam Research Corporation,Charles Shi,Semi Equipment & Materials
+NVMI,Nova Ltd.,Charles Shi,Semi Equipment & Materials
+UCTT,"Ultra Clean Holdings, Inc.",Charles Shi,Semi Equipment & Materials
+VECO,"Veeco Instruments, Inc.",Charles Shi,Semi Equipment & Materials
+GFS,GlobalFoundries,N. Quinn Bolton,Specialty Foundry
+SKYT,SkyWater Technology Inc,N. Quinn Bolton,Specialty Foundry
+BAND,Bandwidth Inc.,Joshua Reilly,Communication Services
+CXDO,Crexendo,Joshua Reilly,Communication Services
+KLTR,"Kaltura, Inc.",Ryan Koontz,Communication Services
+PL,Planet Labs,Ryan Koontz,Communication Services
+RNG,"RingCentral, Inc.",Joshua Reilly,Communication Services
+TWLO,"Twilio, Inc.",Joshua Reilly,Communication Services
+VSAT,"ViaSat, Inc.",Ryan Koontz,Communication Services
+YSS,York Space Systems,Ryan Koontz,Communication Services
+ZM,"Zoom Video Communications, Inc.",Joshua Reilly,Communication Services
+AI,"C3.ai, Inc.",Mike Cikos,Data Analytics & Infra Software
+CFLT,Confluent Inc,Mike Cikos,Data Analytics & Infra Software
+DDOG,Datadog,Mike Cikos,Data Analytics & Infra Software
+DOCN,"DigitalOcean Holdings, Inc.",Mike Cikos,Data Analytics & Infra Software
+DT,Dynatrace,Mike Cikos,Data Analytics & Infra Software
+ESTC,Elastic NV,Mike Cikos,Data Analytics & Infra Software
+GTLB,"GitLab, Inc.",Mike Cikos,Data Analytics & Infra Software
+FROG,"JFrog, Inc.",Mike Cikos,Data Analytics & Infra Software
+MDB,"MongoDB, Inc.",Mike Cikos,Data Analytics & Infra Software
+NTNX,"Nutanix, Inc.",Mike Cikos,Data Analytics & Infra Software
+PSTG,"Pure Storage, Inc.",Mike Cikos,Data Analytics & Infra Software
+NOW,"ServiceNow, Inc.",Mike Cikos,Data Analytics & Infra Software
+SNOW,Snowflake Inc.,Mike Cikos,Data Analytics & Infra Software
+TSSI,"TSS, Inc.",Matthew Calitri,Data Analytics & Infra Software
+AGL,agilon health,Matthew Shea,Digital Healthcare
+AMWL,American Well Corporation,Ryan MacDonald,Digital Healthcare
+DH,Definitive Healthcare Corp.,Ryan MacDonald,Digital Healthcare
+DCGO,DocGo Inc.,Ryan MacDonald,Digital Healthcare
+DOCS,"Doximity, Inc.",Ryan MacDonald,Digital Healthcare
+EVH,Evolent Health,Matthew Shea,Digital Healthcare
+HIMS,"Hims & Hers Health, Inc.",Ryan MacDonald,Digital Healthcare
+HNGE,"Hinge Health, Inc.",Ryan MacDonald,Digital Healthcare
+ODD,ODDITY Tech Ltd.,Ryan MacDonald,Digital Healthcare
+OMDA,Omada Health,Ryan MacDonald,Digital Healthcare
+TOI,"Oncology Institute, Inc.",Matthew Shea,Digital Healthcare
+PHR,"Phreesia, Inc.",Ryan MacDonald,Digital Healthcare
+PRVA,Privia Health Group,Matthew Shea,Digital Healthcare
+TALK,"Talkspace, Inc.",Ryan MacDonald,Digital Healthcare
+TDOC,"Teladoc Health, Inc.",Ryan MacDonald,Digital Healthcare
+TEM,"Tempus AI, Inc.",Ryan MacDonald,Digital Healthcare
+VEEV,Veeva Systems Inc.,Ryan MacDonald,Digital Healthcare
+ACIW,ACI Worldwide,Mayank Tandon,FinTech
+AFRM,"Affirm Holdings, Inc.",Kyle Peterson,FinTech
+AGYS,"Agilysys, Inc.",Mayank Tandon,FinTech
+ALIT,Alight Inc,Kyle Peterson,FinTech
+ALKT,Alkami Technology Inc.,Mayank Tandon,FinTech
+AX,"Axos Financial, Inc.",Kyle Peterson,FinTech
+XYZ,"Block, Inc.",Mayank Tandon,FinTech
+BR,"Broadridge Financial Solutions, Inc.",Kyle Peterson,FinTech
+CDLX,"Cardlytics, Inc.",Kyle Peterson,FinTech
+CTSH,Cognizant Technology Solutions Corp.,Mayank Tandon,FinTech
+CSGP,"CoStar Group, Inc.",Mayank Tandon,FinTech
+DFIN,"Donnelley Financial Solutions, Inc.",Kyle Peterson,FinTech
+DAVA,Endava,Mayank Tandon,FinTech
+EPAM,"EPAM Systems, Inc.",Mayank Tandon,FinTech
+EFX,"Equifax, Inc.",Kyle Peterson,FinTech
+EEFT,"Euronet Worldwide, Inc.",Mayank Tandon,FinTech
+EVER,"EverQuote, Inc.",Mayank Tandon,FinTech
+EXLS,"ExlService Holdings, Inc.",Mayank Tandon,FinTech
+FICO,Fair Isaac Corporation,Kyle Peterson,FinTech
+FIGR,"Figure Technology Solutions, Inc.","John Todaro, Kyle Peterson",FinTech
+FA,First Advantage Corp.,Kyle Peterson,FinTech
+G,Genpact Limited,Mayank Tandon,FinTech
+GLOB,Globant SA,Mayank Tandon,FinTech
+GDYN,Grid Dynamics Holdings,Mayank Tandon,FinTech
+GWRE,Guidewire Software,Mayank Tandon,FinTech
+KLAR,Klarna Group,Kyle Peterson,FinTech
+TREE,"LendingTree, Inc.",Mayank Tandon,FinTech
+NCNO,"nCino, Inc.",Mayank Tandon,FinTech
+VYX,NCR Voyix Corporation,Mayank Tandon,FinTech
+NIQ,NIQ Global Intelligence PLC,Kyle Peterson,FinTech
+PAR,Par Technology Corporation,Mayank Tandon,FinTech
+PAYO,Payoneer Global Inc.,Mayank Tandon,FinTech
+PYPL,"PayPal Holdings, Inc.",Mayank Tandon,FinTech
+QTWO,"Q2 Holdings, Inc.",Mayank Tandon,FinTech
+SPNS,Sapiens International Corp. NV,Mayank Tandon,FinTech
+SEZL,Sezzle Inc.,Kyle Peterson,FinTech
+SOFI,SoFi Technologies Inc,Kyle Peterson,FinTech
+SSNC,SS&C Technologies Holdings Inc.,Mayank Tandon,FinTech
+TOST,"Toast, Inc.",Mayank Tandon,FinTech
+TRU,TransUnion,Kyle Peterson,FinTech
+TNET,"TriNet Group, Inc.",Kyle Peterson,FinTech
+UIS,Unisys Corporation,Mayank Tandon,FinTech
+UPST,"Upstart Holdings, Inc.",Kyle Peterson,FinTech
+AMPL,Amplitude Inc,Scott Berg,SaaS/Application Software
+ASUR,"Asure Software, Inc.",Joshua Reilly,SaaS/Application Software
+AEYE,"AudioEye, Inc.",Joshua Reilly,SaaS/Application Software
+AXON,"Axon Enterprise, Inc.",Joshua Reilly,SaaS/Application Software
+BNED,Barnes & Noble Education,Ryan MacDonald,SaaS/Application Software
+BILL,"Bill.com Holdings, Inc.",Scott Berg,SaaS/Application Software
+BRZE,"Braze, Inc.",Scott Berg,SaaS/Application Software
+CHGG,Chegg,Ryan MacDonald,SaaS/Application Software
+YOU,"Clear Secure, Inc.",Joshua Reilly,SaaS/Application Software
+CMRC,"Commerce.com, Inc.",Scott Berg,SaaS/Application Software
+COUR,Coursera,Ryan MacDonald,SaaS/Application Software
+LAW,"CS Disco, Inc.",Scott Berg,SaaS/Application Software
+DMRC,Digimarc Corporation,Joshua Reilly,SaaS/Application Software
+DCBO,"Docebo, Inc.",Ryan MacDonald,SaaS/Application Software
+DOCU,"DocuSign, Inc.",Scott Berg,SaaS/Application Software
+DUOL,"Duolingo, Inc.",Ryan MacDonald,SaaS/Application Software
+FIVN,"Five 9, Inc.",Scott Berg,SaaS/Application Software
+FRSH,"Freshworks, Inc.",Scott Berg,SaaS/Application Software
+GLBE,Global-e Online Ltd.,Scott Berg,SaaS/Application Software
+HUBS,"HubSpot, Inc.",Joshua Reilly,SaaS/Application Software
+KARO,Karooooo,Joshua Reilly,SaaS/Application Software
+KVYO,"Klaviyo, Inc.",Scott Berg,SaaS/Application Software
+LPSN,"LivePerson, Inc.",Ryan MacDonald,SaaS/Application Software
+MH,McGraw Hill,Ryan MacDonald,SaaS/Application Software
+MNDY,monday.com Ltd.,Scott Berg,SaaS/Application Software
+NAVN,"Navan, Inc.",Scott Berg,SaaS/Application Software
+NRDY,Nerdy Inc.,Ryan MacDonald,SaaS/Application Software
+PAYC,"Paycom Software, Inc.",Joshua Reilly,SaaS/Application Software
+PCTY,Paylocity Holding Corp.,Scott Berg,SaaS/Application Software
+CRM,"Salesforce, Inc.",Scott Berg,SaaS/Application Software
+SEMR,"SEMrush Holdings, Inc.",Scott Berg,SaaS/Application Software
+TTAN,ServiceTitan,Scott Berg,SaaS/Application Software
+SHOP,"Shopify, Inc.",Scott Berg,SaaS/Application Software
+SMWB,Similarweb Ltd.,Scott Berg,SaaS/Application Software
+SPT,Sprout Social Inc Class A,Scott Berg,SaaS/Application Software
+SPSC,SPS Commerce Inc.,Scott Berg,SaaS/Application Software
+TTGT,"TechTarget, Inc.",Joshua Reilly,SaaS/Application Software
+THRY,"Thryv Holdings, Inc.",Scott Berg,SaaS/Application Software
+TYL,"Tyler Technologies, Inc.",Joshua Reilly,SaaS/Application Software
+UDMY,"Udemy, Inc.",Ryan MacDonald,SaaS/Application Software
+PATH,"UiPath, Inc.",Scott Berg,SaaS/Application Software
+UPLD,"Upland Software, Inc.",Scott Berg,SaaS/Application Software
+VERI,"Veritone, Inc.",Joshua Reilly,SaaS/Application Software
+VERX,"Vertex, Inc. Class A",Joshua Reilly,SaaS/Application Software
+VIA,"Via Transportation, Inc.",Scott Berg,SaaS/Application Software
+WDAY,"Workday, Inc.",Scott Berg,SaaS/Application Software
+YEXT,"Yext, Inc",Ryan MacDonald,SaaS/Application Software
+ZETA,Zeta Global Holdings Corp.,Scott Berg,SaaS/Application Software
+ACHR,Archer Aviation Inc,Chris Pierce,Transportation Tech
+AUR,Aurora Innovation,Chris Pierce,Transportation Tech
+BETA,Beta Technologie,Chris Pierce,Transportation Tech
+BLNK,Blink Charging Co,Chris Pierce,Transportation Tech
+BLBD,Blue Bird Corporation,Chris Pierce,Transportation Tech
+CARG,CarGurus Inc.,Chris Pierce,Transportation Tech
+KMX,"CarMax, Inc.",Chris Pierce,Transportation Tech
+CVNA,Carvana Co.,Chris Pierce,Transportation Tech
+CHPT,"ChargePoint Holdings, Inc.",Chris Pierce,Transportation Tech
+EVGO,"EVgo, Inc.",Chris Pierce,Transportation Tech
+LCID,"Lucid Group, Inc.",Chris Pierce,Transportation Tech
+RIVN,"Rivian Automotive, Inc.",Chris Pierce,Transportation Tech
+SLDP,"Solid Power, Inc.",Chris Pierce,Transportation Tech
+SAH,Sonic Automotive,Chris Pierce,Transportation Tech
+TSLA,"Tesla, Inc.",Chris Pierce,Transportation Tech
+ULY,Urgent.ly,Chris Pierce,Transportation Tech
+EVTL,Vertical Aerospace,Chris Pierce,Transportation Tech
