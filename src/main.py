@@ -38,7 +38,7 @@ def load_coverage(path: str) -> list[dict]:
 def fetch_all(coverage: list[dict]) -> list[dict]:
     results = []
     done = 0
-    with ThreadPoolExecutor(max_workers=8) as ex:
+    with ThreadPoolExecutor(max_workers=2) as ex:
         futures = {ex.submit(fetch_ticker, row["ticker"]): row for row in coverage}
         for fut in as_completed(futures):
             row = futures[fut]

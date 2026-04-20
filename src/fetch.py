@@ -1,10 +1,28 @@
 """yfinance wrappers: returns a dict of everything we need per ticker."""
 from __future__ import annotations
 
+import random
+import time
 from datetime import datetime, timezone
 
 import pandas as pd
 import yfinance as yf
+from curl_cffi import requests as cffi_requests
+
+_session = cffi_requests.Session(impersonate="chrome")
+
+
+def _retry(fn, retries: int = 4):
+    for attempt in range(retries):
+        try:
+            return fn()
+        except Exception as e:
+            msg = str(e)
+            throttled = "429" in msg or "Too Many" in msg or "Expecting value" in msg
+            if throttled and attempt < retries - 1:
+                time.sleep((2 ** attempt) + random.uniform(0, 0.5))
+                continue
+            raise
 
 
 def rating_label(mean: float) -> str:
@@ -33,7 +51,7 @@ def _clean(v) -> str:
 
 def fetch_ticker(ticker: str) -> dict:
     """Return a dict with all fields; any field can be None/empty on failure."""
-    t = yf.Ticker(ticker)
+    t = yf.Ticker(ticker, session=_session)
     out = {
         "ticker": ticker,
         "price": None,
@@ -50,7 +68,7 @@ def fetch_ticker(ticker: str) -> dict:
     }
 
     try:
-        hist = t.history(period="15d", auto_adjust=False)
+        hist = _retry(lambda: t.history(period="15d", auto_adjust=False))
         if not hist.empty:
             closes = hist["Close"].dropna()
             if len(closes) >= 1:
@@ -63,7 +81,7 @@ def fetch_ticker(ticker: str) -> dict:
         pass
 
     try:
-        cal = t.calendar
+        cal = _retry(lambda: t.calendar)
         if isinstance(cal, dict):
             e = cal.get("Earnings Date")
             if isinstance(e, list) and e:
@@ -74,7 +92,7 @@ def fetch_ticker(ticker: str) -> dict:
         pass
 
     try:
-        info = t.info or {}
+        info = _retry(lambda: t.info) or {}
         mean = info.get("recommendationMean")
         if isinstance(mean, (int, float)) and mean > 0:
             out["consensus"] = rating_label(float(mean))
@@ -92,7 +110,7 @@ def fetch_ticker(ticker: str) -> dict:
         pass
 
     try:
-        news = t.news or []
+        news = _retry(lambda: t.news) or []
         for item in news[:5]:
             content = item.get("content") if isinstance(item.get("content"), dict) else item
             title = content.get("title") or ""
@@ -124,7 +142,7 @@ def fetch_ticker(ticker: str) -> dict:
         pass
 
     try:
-        ud = t.upgrades_downgrades
+        ud = _retry(lambda: t.upgrades_downgrades)
         if ud is not None and not ud.empty:
             recent = ud.head(10).reset_index().fillna("")
             for _, row in recent.iterrows():
@@ -143,4 +161,5 @@ def fetch_ticker(ticker: str) -> dict:
     except Exception:
         pass
 
+    time.sleep(0.3 + random.uniform(0, 0.3))
     return out
