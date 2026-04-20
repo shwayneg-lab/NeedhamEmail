@@ -31,6 +31,7 @@ a:hover { text-decoration: underline; }
   <h1 class="ticker">{{ row.ticker }}</h1>
   <p class="company">{{ row.company_name }}</p>
   <div class="meta">{{ row.sector }} · Needham analyst: <strong>{{ row.analyst }}</strong></div>
+  {% if row.price_check_warning %}<div style="color: #c57; font-size: 12px; margin-top: 6px;">⚠ Price data cross-check flag: Finnhub and Stooq disagree by &gt;2%. Verify manually.</div>{% endif %}
 </div>
 
 <div class="stats">

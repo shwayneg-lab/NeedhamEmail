@@ -5,7 +5,6 @@ import csv
 import json
 import os
 import sys
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
 
@@ -18,7 +17,7 @@ from src.digest import (
     build_rating_actions,
     build_watchlist,
 )
-from src.fetch import fetch_ticker
+from src.fetch import fetch_ticker, save_desc_cache
 from src.render import render_digest, render_index, render_ticker_page
 
 REPO_FULL = os.environ.get("GITHUB_REPOSITORY", "shwayneg-lab/NeedhamEmail")
@@ -29,33 +28,95 @@ COVERAGE_FILE = os.environ.get("COVERAGE_FILE", "coverage.csv")
 SKIP_EMAIL = os.environ.get("DIGEST_SKIP_EMAIL") == "1"
 SKIP_TIME_CHECK = os.environ.get("DIGEST_SKIP_TIME_CHECK") == "1"
 
+FULL_CACHE_PATH = Path("state/full_data.json")
+
 
 def load_coverage(path: str) -> list[dict]:
     with open(path) as f:
         return list(csv.DictReader(f))
 
 
-def fetch_all(coverage: list[dict]) -> list[dict]:
+def _empty_result(ticker: str) -> dict:
+    return {
+        "ticker": ticker,
+        "price": None,
+        "pct_1d": None,
+        "pct_5d": None,
+        "next_earnings": None,
+        "consensus": None,
+        "price_target": None,
+        "upside_pct": None,
+        "n_analysts": None,
+        "description": "",
+        "news": [],
+        "upgrades": [],
+        "price_check_warning": False,
+    }
+
+
+def fetch_shallow(coverage: list[dict]) -> list[dict]:
+    """Pass 1: quote + 5-day + description for all tickers (sequential, rate-limited)."""
     results = []
-    done = 0
-    with ThreadPoolExecutor(max_workers=2) as ex:
-        futures = {ex.submit(fetch_ticker, row["ticker"]): row for row in coverage}
-        for fut in as_completed(futures):
-            row = futures[fut]
-            try:
-                data = fut.result()
-            except Exception as e:
-                print(f"  {row['ticker']} failed: {e}", file=sys.stderr)
-                data = {"ticker": row["ticker"], "news": [], "upgrades": []}
-            data["company_name"] = row.get("company_name", "")
-            data["analyst"] = row.get("analyst", "")
-            data["sector"] = row.get("sector", "")
-            results.append(data)
-            done += 1
-            if done % 50 == 0:
-                print(f"[{done}/{len(coverage)}] fetched", flush=True)
+    for i, row in enumerate(coverage, start=1):
+        try:
+            data = fetch_ticker(row["ticker"], deep=False)
+        except Exception as e:
+            print(f"  {row['ticker']} failed: {e}", file=sys.stderr)
+            data = _empty_result(row["ticker"])
+        data["company_name"] = row.get("company_name", "")
+        data["analyst"] = row.get("analyst", "")
+        data["sector"] = row.get("sector", "")
+        results.append(data)
+        if i % 50 == 0:
+            print(f"[{i}/{len(coverage)}] shallow fetched", flush=True)
     results.sort(key=lambda r: r["ticker"])
     return results
+
+
+def fetch_deep_tickers(tickers: set[str], full_cache: dict) -> dict:
+    """Pass 2: recommendation + price target + news for digest-relevant tickers only."""
+    for i, ticker in enumerate(sorted(tickers), start=1):
+        try:
+            deep = fetch_ticker(ticker, deep=True)
+            full_cache[ticker] = {
+                "consensus": deep.get("consensus"),
+                "price_target": deep.get("price_target"),
+                "upside_pct": deep.get("upside_pct"),
+                "n_analysts": deep.get("n_analysts"),
+                "news": deep.get("news", []),
+                "updated": datetime.utcnow().isoformat(),
+            }
+        except Exception as e:
+            print(f"  {ticker} deep failed: {e}", file=sys.stderr)
+        if i % 10 == 0:
+            print(f"[{i}/{len(tickers)}] deep fetched", flush=True)
+    return full_cache
+
+
+def load_full_cache() -> dict:
+    if FULL_CACHE_PATH.exists():
+        try:
+            return json.loads(FULL_CACHE_PATH.read_text() or "{}")
+        except json.JSONDecodeError:
+            return {}
+    return {}
+
+
+def save_full_cache(cache: dict):
+    FULL_CACHE_PATH.parent.mkdir(exist_ok=True)
+    FULL_CACHE_PATH.write_text(json.dumps(cache, indent=2, sort_keys=True))
+
+
+def merge_cache_into_results(results: list[dict], cache: dict):
+    for r in results:
+        c = cache.get(r["ticker"])
+        if not c:
+            continue
+        for field in ("consensus", "price_target", "upside_pct", "n_analysts", "news"):
+            if c.get(field) is not None and not r.get(field):
+                r[field] = c[field]
+        if r.get("price") and r.get("price_target"):
+            r["upside_pct"] = round((r["price_target"] / r["price"] - 1) * 100, 2)
 
 
 def main() -> int:
@@ -88,11 +149,25 @@ def main() -> int:
         except json.JSONDecodeError:
             prev_state = {}
 
-    results = fetch_all(coverage)
+    print("Pass 1: shallow fetch (quote + 5-day + description)")
+    results = fetch_shallow(coverage)
+    save_desc_cache()
 
     watchlist = build_watchlist(results, mode, now_et)
     movers = build_movers(results)
     earnings = build_earnings_week(results, now_et)
+
+    digest_tickers = set()
+    digest_tickers.update(item["ticker"] for item in watchlist)
+    digest_tickers.update(m["ticker"] for m in movers["gainers"])
+    digest_tickers.update(m["ticker"] for m in movers["decliners"])
+    digest_tickers.update(e["ticker"] for e in earnings)
+
+    print(f"Pass 2: deep fetch for {len(digest_tickers)} digest-relevant tickers")
+    full_cache = load_full_cache()
+    full_cache = fetch_deep_tickers(digest_tickers, full_cache)
+    save_full_cache(full_cache)
+    merge_cache_into_results(results, full_cache)
 
     if not prev_state:
         print("No previous state — seeding baseline, skipping rating-actions section")

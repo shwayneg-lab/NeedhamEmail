@@ -1,28 +1,78 @@
-"""yfinance wrappers: returns a dict of everything we need per ticker."""
+"""Finnhub (primary) + Stooq (5-day + price cross-check) fetcher."""
 from __future__ import annotations
 
-import random
+import json
+import os
+import threading
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
+from io import StringIO
+from pathlib import Path
 
 import pandas as pd
-import yfinance as yf
-from curl_cffi import requests as cffi_requests
+import requests
 
-_session = cffi_requests.Session(impersonate="chrome")
+FINNHUB_KEY = os.environ.get("FINNHUB_API_KEY", "")
+FINNHUB_BASE = "https://finnhub.io/api/v1"
+STOOQ_BASE = "https://stooq.com/q/d/l"
+
+SESSION = requests.Session()
+SESSION.headers.update({"User-Agent": "NeedhamDigest/1.0"})
+
+_desc_cache_path = Path("state/descriptions.json")
+_desc_cache: dict[str, str] = {}
+_desc_cache_loaded = False
+
+_earnings_cache: dict[str, str] = {}
+_earnings_cache_loaded = False
 
 
-def _retry(fn, retries: int = 4):
-    for attempt in range(retries):
-        try:
-            return fn()
-        except Exception as e:
-            msg = str(e)
-            throttled = "429" in msg or "Too Many" in msg or "Expecting value" in msg
-            if throttled and attempt < retries - 1:
-                time.sleep((2 ** attempt) + random.uniform(0, 0.5))
-                continue
-            raise
+class _RateLimiter:
+    def __init__(self, per_minute: int):
+        self.min_interval = 60.0 / per_minute
+        self.last = 0.0
+        self.lock = threading.Lock()
+
+    def wait(self):
+        with self.lock:
+            now = time.monotonic()
+            sleep_for = self.min_interval - (now - self.last)
+            if sleep_for > 0:
+                time.sleep(sleep_for)
+            self.last = time.monotonic()
+
+
+_limiter = _RateLimiter(per_minute=55)
+
+
+def _finnhub(path: str, **params):
+    if not FINNHUB_KEY:
+        raise RuntimeError("FINNHUB_API_KEY not set")
+    params["token"] = FINNHUB_KEY
+    _limiter.wait()
+    r = SESSION.get(f"{FINNHUB_BASE}{path}", params=params, timeout=15)
+    if r.status_code == 429:
+        time.sleep(2.0)
+        _limiter.wait()
+        r = SESSION.get(f"{FINNHUB_BASE}{path}", params=params, timeout=15)
+    r.raise_for_status()
+    return r.json()
+
+
+def _stooq_history(ticker: str) -> pd.DataFrame | None:
+    try:
+        sym = ticker.lower().replace(".", "-") + ".us"
+        url = f"{STOOQ_BASE}/?s={sym}&i=d"
+        r = SESSION.get(url, timeout=15)
+        if r.status_code != 200 or not r.text or "Date" not in r.text[:50]:
+            return None
+        df = pd.read_csv(StringIO(r.text))
+        if df.empty or "Close" not in df.columns:
+            return None
+        df["Date"] = pd.to_datetime(df["Date"])
+        return df.sort_values("Date").tail(15)
+    except Exception:
+        return None
 
 
 def rating_label(mean: float) -> str:
@@ -37,129 +87,171 @@ def rating_label(mean: float) -> str:
     return "Strong Sell"
 
 
-def _clean(v) -> str:
-    if v is None:
-        return ""
+def _consensus_from_buckets(rec: dict) -> tuple[str | None, int | None]:
+    sb = rec.get("strongBuy") or 0
+    b = rec.get("buy") or 0
+    h = rec.get("hold") or 0
+    s = rec.get("sell") or 0
+    ss = rec.get("strongSell") or 0
+    total = sb + b + h + s + ss
+    if total == 0:
+        return None, None
+    mean = (sb * 1 + b * 2 + h * 3 + s * 4 + ss * 5) / total
+    return rating_label(mean), total
+
+
+def _load_desc_cache():
+    global _desc_cache, _desc_cache_loaded
+    if _desc_cache_loaded:
+        return
+    if _desc_cache_path.exists():
+        try:
+            _desc_cache = json.loads(_desc_cache_path.read_text() or "{}")
+        except json.JSONDecodeError:
+            _desc_cache = {}
+    _desc_cache_loaded = True
+
+
+def save_desc_cache():
+    _desc_cache_path.parent.mkdir(exist_ok=True)
+    _desc_cache_path.write_text(json.dumps(_desc_cache, indent=2, sort_keys=True))
+
+
+def _load_earnings():
+    global _earnings_cache, _earnings_cache_loaded
+    if _earnings_cache_loaded:
+        return
     try:
-        if pd.isna(v):
-            return ""
-    except (TypeError, ValueError):
-        pass
-    s = str(v)
-    return "" if s == "nan" else s
+        today = datetime.now(timezone.utc).date()
+        end = today + timedelta(days=14)
+        data = _finnhub(
+            "/calendar/earnings",
+            **{"from": today.isoformat(), "to": end.isoformat()},
+        )
+        for item in (data or {}).get("earningsCalendar", []) or []:
+            sym = item.get("symbol")
+            date = item.get("date")
+            if sym and date and sym not in _earnings_cache:
+                _earnings_cache[sym] = date
+    except Exception as e:
+        print(f"  earnings calendar failed: {e}")
+    _earnings_cache_loaded = True
 
 
-def fetch_ticker(ticker: str) -> dict:
-    """Return a dict with all fields; any field can be None/empty on failure."""
-    t = yf.Ticker(ticker, session=_session)
+def fetch_ticker(ticker: str, deep: bool = True) -> dict:
+    """
+    Fetch per-ticker data.
+    deep=True: fetch rec + price target + news (heavy; only for digest-relevant tickers).
+    deep=False: just quote + 5-day + earnings + cached description.
+    """
+    _load_desc_cache()
+    _load_earnings()
+
     out = {
         "ticker": ticker,
         "price": None,
         "pct_1d": None,
         "pct_5d": None,
-        "next_earnings": None,
+        "next_earnings": _earnings_cache.get(ticker),
         "consensus": None,
         "price_target": None,
         "upside_pct": None,
         "n_analysts": None,
-        "description": "",
+        "description": _desc_cache.get(ticker, ""),
         "news": [],
         "upgrades": [],
+        "price_check_warning": False,
     }
 
     try:
-        hist = _retry(lambda: t.history(period="15d", auto_adjust=False))
-        if not hist.empty:
-            closes = hist["Close"].dropna()
-            if len(closes) >= 1:
-                out["price"] = round(float(closes.iloc[-1]), 2)
-            if len(closes) >= 2:
-                out["pct_1d"] = round((closes.iloc[-1] / closes.iloc[-2] - 1) * 100, 2)
-            if len(closes) >= 6:
-                out["pct_5d"] = round((closes.iloc[-1] / closes.iloc[-6] - 1) * 100, 2)
-    except Exception:
-        pass
+        q = _finnhub("/quote", symbol=ticker)
+        price = q.get("c")
+        pct_1d = q.get("dp")
+        if isinstance(price, (int, float)) and price > 0:
+            out["price"] = round(float(price), 2)
+        if isinstance(pct_1d, (int, float)) and abs(pct_1d) < 30:
+            out["pct_1d"] = round(float(pct_1d), 2)
+    except Exception as e:
+        print(f"  {ticker} quote failed: {e}")
 
     try:
-        cal = _retry(lambda: t.calendar)
-        if isinstance(cal, dict):
-            e = cal.get("Earnings Date")
-            if isinstance(e, list) and e:
-                out["next_earnings"] = str(e[0])[:10]
-            elif e:
-                out["next_earnings"] = str(e)[:10]
-    except Exception:
-        pass
+        hist = _stooq_history(ticker)
+        if hist is not None and len(hist) >= 6:
+            stooq_last = float(hist["Close"].iloc[-1])
+            stooq_5d_ago = float(hist["Close"].iloc[-6])
+            if stooq_5d_ago > 0:
+                out["pct_5d"] = round((stooq_last / stooq_5d_ago - 1) * 100, 2)
+            if out["price"] and abs(out["price"] - stooq_last) / stooq_last > 0.02:
+                out["price_check_warning"] = True
+    except Exception as e:
+        print(f"  {ticker} stooq failed: {e}")
+
+    if not out["description"]:
+        try:
+            prof = _finnhub("/stock/profile2", symbol=ticker)
+            name = prof.get("name") or ""
+            industry = prof.get("finnhubIndustry") or ""
+            weburl = prof.get("weburl") or ""
+            desc_parts = [x for x in [name, industry, weburl] if x]
+            desc = " · ".join(desc_parts)
+            if desc:
+                out["description"] = desc
+                _desc_cache[ticker] = desc
+        except Exception as e:
+            print(f"  {ticker} profile failed: {e}")
+
+    if not deep:
+        return out
 
     try:
-        info = _retry(lambda: t.info) or {}
-        mean = info.get("recommendationMean")
-        if isinstance(mean, (int, float)) and mean > 0:
-            out["consensus"] = rating_label(float(mean))
-        target = info.get("targetMeanPrice")
-        if isinstance(target, (int, float)) and target > 0:
-            out["price_target"] = round(float(target), 2)
-            if out["price"]:
-                out["upside_pct"] = round((float(target) / out["price"] - 1) * 100, 2)
-        n = info.get("numberOfAnalystOpinions")
-        if isinstance(n, int) and n > 0:
-            out["n_analysts"] = n
-        desc = info.get("longBusinessSummary") or ""
-        out["description"] = desc[:2500]
-    except Exception:
-        pass
+        recs = _finnhub("/stock/recommendation", symbol=ticker)
+        if isinstance(recs, list) and recs:
+            latest = recs[0]
+            label, total = _consensus_from_buckets(latest)
+            if label:
+                out["consensus"] = label
+                out["n_analysts"] = total
+    except Exception as e:
+        print(f"  {ticker} recommendation failed: {e}")
 
     try:
-        news = _retry(lambda: t.news) or []
-        for item in news[:5]:
-            content = item.get("content") if isinstance(item.get("content"), dict) else item
-            title = content.get("title") or ""
-            link_obj = content.get("canonicalUrl")
-            if isinstance(link_obj, dict):
-                link = link_obj.get("url", "")
-            else:
-                link = content.get("link") or item.get("link", "")
-            prov_obj = content.get("provider")
-            if isinstance(prov_obj, dict):
-                publisher = prov_obj.get("displayName", "")
-            else:
-                publisher = item.get("publisher", "")
-            pub_time = content.get("pubDate") or item.get("providerPublishTime")
-            if isinstance(pub_time, (int, float)):
-                pub_time = datetime.fromtimestamp(pub_time, tz=timezone.utc).strftime("%Y-%m-%d")
-            elif isinstance(pub_time, str):
-                pub_time = pub_time[:10]
-            if title:
-                out["news"].append(
-                    {
-                        "title": title,
-                        "link": link,
-                        "publisher": publisher or "",
-                        "date": pub_time or "",
-                    }
-                )
-    except Exception:
-        pass
+        pt = _finnhub("/stock/price-target", symbol=ticker)
+        target = pt.get("targetMean")
+        if isinstance(target, (int, float)) and target > 0 and out["price"]:
+            if 0.2 * out["price"] <= target <= 5 * out["price"]:
+                out["price_target"] = round(float(target), 2)
+                out["upside_pct"] = round((target / out["price"] - 1) * 100, 2)
+    except Exception as e:
+        print(f"  {ticker} price-target failed: {e}")
 
     try:
-        ud = _retry(lambda: t.upgrades_downgrades)
-        if ud is not None and not ud.empty:
-            recent = ud.head(10).reset_index().fillna("")
-            for _, row in recent.iterrows():
-                date = row.get("GradeDate")
-                if hasattr(date, "strftime"):
-                    date = date.strftime("%Y-%m-%d")
-                out["upgrades"].append(
-                    {
-                        "date": _clean(date)[:10],
-                        "firm": _clean(row.get("Firm")),
-                        "from": _clean(row.get("FromGrade")),
-                        "to": _clean(row.get("ToGrade")),
-                        "action": _clean(row.get("Action")),
-                    }
-                )
-    except Exception:
-        pass
+        today = datetime.now(timezone.utc).date()
+        two_weeks_ago = today - timedelta(days=14)
+        news = _finnhub(
+            "/company-news",
+            symbol=ticker,
+            **{"from": two_weeks_ago.isoformat(), "to": today.isoformat()},
+        )
+        if isinstance(news, list):
+            for item in news[:5]:
+                title = item.get("headline") or ""
+                link = item.get("url") or ""
+                publisher = item.get("source") or ""
+                dt = item.get("datetime")
+                if isinstance(dt, (int, float)):
+                    date_str = datetime.fromtimestamp(dt, tz=timezone.utc).strftime("%Y-%m-%d")
+                else:
+                    date_str = ""
+                if title:
+                    out["news"].append(
+                        {
+                            "title": title,
+                            "link": link,
+                            "publisher": publisher,
+                            "date": date_str,
+                        }
+                    )
+    except Exception as e:
+        print(f"  {ticker} news failed: {e}")
 
-    time.sleep(0.3 + random.uniform(0, 0.3))
     return out
