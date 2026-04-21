@@ -1,0 +1,13 @@
+ticker,label,category
+SPY,S&P 500,Equities
+QQQ,Nasdaq 100,Equities
+IWM,Russell 2000,Equities
+TLT,20Y Treasuries,Rates
+IEF,7-10Y Treasuries,Rates
+HYG,High Yield Credit,Credit
+LQD,IG Credit,Credit
+TIP,TIPS (Inflation),Rates
+GLD,Gold,Commodities
+CPER,Copper,Commodities
+UUP,US Dollar,FX
+VIXY,VIX (Volatility),Volatility
