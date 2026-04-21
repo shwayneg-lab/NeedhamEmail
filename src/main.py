@@ -35,6 +35,7 @@ SKIP_TIME_CHECK = os.environ.get("DIGEST_SKIP_TIME_CHECK") == "1"
 FULL_CACHE_PATH = Path("state/full_data.json")
 HISTORY_PATH = Path("state/price_history.json")
 CAPS_PATH = Path("state/market_caps.json")
+LAST_SENT_PATH = Path("state/last_sent.json")
 MACRO_FILE = os.environ.get("MACRO_FILE", "macro_watchlist.csv")
 HISTORY_MAX_DAYS = 30
 STALE_DAYS = 3
@@ -242,11 +243,24 @@ def main() -> int:
             print(f"Weekend ({now_et:%a}), skipping")
             return 0
         hour = now_et.hour
-        if mode == "morning" and hour not in (6, 7):
-            print(f"Not in 7am ET window (hour={hour}), skipping")
+        # Windows are wide (4-hour) because GitHub cron often delays runs 15-45 min.
+        if mode == "morning" and hour not in (6, 7, 8, 9):
+            print(f"Not in morning window 6-9am ET (hour={hour}), skipping")
             return 0
-        if mode == "closing" and hour not in (16, 17):
-            print(f"Not in 5:30pm ET window (hour={hour}), skipping")
+        if mode == "closing" and hour not in (16, 17, 18, 19):
+            print(f"Not in closing window 4-7pm ET (hour={hour}), skipping")
+            return 0
+
+        # Per-day dedupe: two crons cover DST, and only one should actually send.
+        today_str = now_et.strftime("%Y-%m-%d")
+        last_sent = {}
+        if LAST_SENT_PATH.exists():
+            try:
+                last_sent = json.loads(LAST_SENT_PATH.read_text() or "{}")
+            except json.JSONDecodeError:
+                pass
+        if last_sent.get(mode) == today_str:
+            print(f"Already sent {mode} digest today ({today_str}), skipping")
             return 0
 
     print(f"Running {mode} digest at {now_et:%Y-%m-%d %H:%M %Z}")
@@ -353,6 +367,16 @@ def main() -> int:
     else:
         code = mailer.send(subject, email_html)
         print(f"Email: HTTP {code}")
+        if 200 <= code < 300 and not SKIP_TIME_CHECK:
+            LAST_SENT_PATH.parent.mkdir(exist_ok=True)
+            last_sent = {}
+            if LAST_SENT_PATH.exists():
+                try:
+                    last_sent = json.loads(LAST_SENT_PATH.read_text() or "{}")
+                except json.JSONDecodeError:
+                    pass
+            last_sent[mode] = now_et.strftime("%Y-%m-%d")
+            LAST_SENT_PATH.write_text(json.dumps(last_sent, indent=2, sort_keys=True))
 
     state_path.parent.mkdir(exist_ok=True)
     new_state = {r["ticker"]: r.get("upgrades", [])[:5] for r in results}
