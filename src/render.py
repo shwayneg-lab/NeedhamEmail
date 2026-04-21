@@ -9,7 +9,19 @@ _env = Environment(
 )
 
 
-def render_digest(mode, watchlist, movers, earnings, new_actions, now_et, pages_base):
+def render_digest(
+    mode,
+    watchlist,
+    movers,
+    earnings,
+    new_actions,
+    now_et,
+    pages_base,
+    macro=None,
+    sector_rotation=None,
+    split_movers=None,
+    week_review=None,
+):
     tmpl = _env.get_template("digest.html.j2")
     return tmpl.render(
         mode=mode,
@@ -19,6 +31,10 @@ def render_digest(mode, watchlist, movers, earnings, new_actions, now_et, pages_
         new_actions=new_actions,
         now=now_et,
         pages_base=pages_base,
+        macro=macro or [],
+        sector_rotation=sector_rotation or {"leaders": [], "laggards": []},
+        split_movers=split_movers,
+        week_review=week_review,
     )
 
 

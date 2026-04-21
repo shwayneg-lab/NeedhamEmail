@@ -8,7 +8,36 @@
   {{ "Morning" if mode == "morning" else "Close" }} · {{ now.strftime("%A, %B %d, %Y") }}
 </div>
 
-<h2 style="font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 6px; margin-top: 24px;">Today's watchlist</h2>
+{% if macro %}
+<h2 style="font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 6px; margin-top: 4px;">Market pulse</h2>
+<table cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+  <tr style="color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em;">
+    <td style="padding: 4px 8px 4px 0;">Asset</td>
+    <td style="padding: 4px 8px; text-align: right;">Price</td>
+    <td style="padding: 4px 8px; text-align: right;">1-day</td>
+    <td style="padding: 4px 0; text-align: right;">5-day</td>
+  </tr>
+{% for m in macro %}
+  <tr style="border-top: 1px solid #f0f0f0;">
+    <td style="padding: 6px 8px 6px 0;">
+      <strong>{{ m.ticker }}</strong>
+      <span style="color: #666;">· {{ m.label }}</span>
+    </td>
+    <td style="padding: 6px 8px; text-align: right; font-variant-numeric: tabular-nums; color: #333;">
+      {% if m.price is number %}${{ "%.2f" | format(m.price) }}{% else %}—{% endif %}
+    </td>
+    <td style="padding: 6px 8px; text-align: right; font-variant-numeric: tabular-nums; {% if m.pct_1d is number and m.pct_1d > 0 %}color: #0a8040;{% elif m.pct_1d is number and m.pct_1d < 0 %}color: #c22;{% else %}color: #999;{% endif %}">
+      {% if m.pct_1d is number %}{{ "%+.2f" | format(m.pct_1d) }}%{% else %}—{% endif %}
+    </td>
+    <td style="padding: 6px 0; text-align: right; font-variant-numeric: tabular-nums; {% if m.pct_5d is number and m.pct_5d > 0 %}color: #0a8040;{% elif m.pct_5d is number and m.pct_5d < 0 %}color: #c22;{% else %}color: #999;{% endif %}">
+      {% if m.pct_5d is number %}{{ "%+.2f" | format(m.pct_5d) }}%{% else %}—{% endif %}
+    </td>
+  </tr>
+{% endfor %}
+</table>
+{% endif %}
+
+<h2 style="font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 6px; margin-top: 28px;">Today's watchlist</h2>
 {% if watchlist %}
 <table cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; font-size: 14px;">
 {% for item in watchlist %}
@@ -27,6 +56,87 @@
 <p style="color: #999; font-size: 14px; margin: 8px 0;">Nothing flagged.</p>
 {% endif %}
 
+{% if sector_rotation and (sector_rotation.leaders or sector_rotation.laggards) %}
+<h2 style="font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 6px; margin-top: 28px;">Sector rotation (avg 5-day)</h2>
+<table cellpadding="0" cellspacing="0" style="width: 100%; font-size: 14px;">
+  <tr>
+    <td style="vertical-align: top; width: 50%; padding-right: 12px;">
+      <div style="color: #0a8040; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 8px;">LEADERS</div>
+{% for s in sector_rotation.leaders %}
+      <div style="padding: 4px 0;">
+        <span style="color: #333; font-weight: 600;">{{ s.sector }}</span>
+        <span style="color: #0a8040;">+{{ "%.2f" | format(s.avg_5d) }}%</span>
+        <span style="color: #999; font-size: 12px;">· {{ s.n }}</span>
+      </div>
+{% endfor %}
+    </td>
+    <td style="vertical-align: top; width: 50%;">
+      <div style="color: #c22; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 8px;">LAGGARDS</div>
+{% for s in sector_rotation.laggards %}
+      <div style="padding: 4px 0;">
+        <span style="color: #333; font-weight: 600;">{{ s.sector }}</span>
+        <span style="color: #c22;">{{ "%.2f" | format(s.avg_5d) }}%</span>
+        <span style="color: #999; font-size: 12px;">· {{ s.n }}</span>
+      </div>
+{% endfor %}
+    </td>
+  </tr>
+</table>
+{% endif %}
+
+{% if split_movers %}
+<h2 style="font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 6px; margin-top: 28px;">Large-cap movers (>$10B, 5-day)</h2>
+<table cellpadding="0" cellspacing="0" style="width: 100%; font-size: 14px;">
+  <tr>
+    <td style="vertical-align: top; width: 50%; padding-right: 12px;">
+      <div style="color: #0a8040; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 8px;">GAINERS</div>
+{% for m in split_movers.large.gainers %}
+      <div style="padding: 4px 0;">
+        <a href="{{ pages_base }}/tickers/{{ m.ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ m.ticker }}</a>
+        <span style="color: #0a8040;">+{{ "%.1f" | format(m.pct_5d) }}%</span>
+        <span style="color: #999; font-size: 12px;">· {{ m.sector }}</span>
+      </div>
+{% endfor %}
+    </td>
+    <td style="vertical-align: top; width: 50%;">
+      <div style="color: #c22; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 8px;">DECLINERS</div>
+{% for m in split_movers.large.decliners %}
+      <div style="padding: 4px 0;">
+        <a href="{{ pages_base }}/tickers/{{ m.ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ m.ticker }}</a>
+        <span style="color: #c22;">{{ "%.1f" | format(m.pct_5d) }}%</span>
+        <span style="color: #999; font-size: 12px;">· {{ m.sector }}</span>
+      </div>
+{% endfor %}
+    </td>
+  </tr>
+</table>
+
+<h2 style="font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 6px; margin-top: 28px;">Small/mid-cap movers (5-day)</h2>
+<table cellpadding="0" cellspacing="0" style="width: 100%; font-size: 14px;">
+  <tr>
+    <td style="vertical-align: top; width: 50%; padding-right: 12px;">
+      <div style="color: #0a8040; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 8px;">GAINERS</div>
+{% for m in split_movers.small.gainers %}
+      <div style="padding: 4px 0;">
+        <a href="{{ pages_base }}/tickers/{{ m.ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ m.ticker }}</a>
+        <span style="color: #0a8040;">+{{ "%.1f" | format(m.pct_5d) }}%</span>
+        <span style="color: #999; font-size: 12px;">· {{ m.sector }}</span>
+      </div>
+{% endfor %}
+    </td>
+    <td style="vertical-align: top; width: 50%;">
+      <div style="color: #c22; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 8px;">DECLINERS</div>
+{% for m in split_movers.small.decliners %}
+      <div style="padding: 4px 0;">
+        <a href="{{ pages_base }}/tickers/{{ m.ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ m.ticker }}</a>
+        <span style="color: #c22;">{{ "%.1f" | format(m.pct_5d) }}%</span>
+        <span style="color: #999; font-size: 12px;">· {{ m.sector }}</span>
+      </div>
+{% endfor %}
+    </td>
+  </tr>
+</table>
+{% else %}
 <h2 style="font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 6px; margin-top: 28px;">Biggest movers (5-day)</h2>
 <table cellpadding="0" cellspacing="0" style="width: 100%; font-size: 14px;">
   <tr>
@@ -52,6 +162,36 @@
     </td>
   </tr>
 </table>
+{% endif %}
+
+{% if week_review %}
+<h2 style="font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 6px; margin-top: 28px;">Week in review (Mon → Fri)</h2>
+<div style="color: #888; font-size: 12px; margin-bottom: 8px;">{{ week_review.n_total }} covered names with full-week data</div>
+<table cellpadding="0" cellspacing="0" style="width: 100%; font-size: 14px;">
+  <tr>
+    <td style="vertical-align: top; width: 50%; padding-right: 12px;">
+      <div style="color: #0a8040; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 8px;">BEST WEEK</div>
+{% for m in week_review.gainers %}
+      <div style="padding: 4px 0;">
+        <a href="{{ pages_base }}/tickers/{{ m.ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ m.ticker }}</a>
+        <span style="color: #0a8040;">+{{ "%.1f" | format(m.pct_week) }}%</span>
+        <span style="color: #999; font-size: 12px;">· {{ m.sector }}</span>
+      </div>
+{% endfor %}
+    </td>
+    <td style="vertical-align: top; width: 50%;">
+      <div style="color: #c22; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 8px;">WORST WEEK</div>
+{% for m in week_review.decliners %}
+      <div style="padding: 4px 0;">
+        <a href="{{ pages_base }}/tickers/{{ m.ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ m.ticker }}</a>
+        <span style="color: #c22;">{{ "%.1f" | format(m.pct_week) }}%</span>
+        <span style="color: #999; font-size: 12px;">· {{ m.sector }}</span>
+      </div>
+{% endfor %}
+    </td>
+  </tr>
+</table>
+{% endif %}
 
 <h2 style="font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 6px; margin-top: 28px;">Earnings this week</h2>
 {% if earnings %}

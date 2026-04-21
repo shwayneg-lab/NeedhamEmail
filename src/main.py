@@ -13,11 +13,15 @@ import pytz
 from src import mailer
 from src.digest import (
     build_earnings_week,
+    build_macro,
     build_movers,
     build_rating_actions,
+    build_sector_rotation,
     build_watchlist,
+    build_week_review,
+    split_movers_by_cap,
 )
-from src.fetch import fetch_ticker, save_desc_cache
+from src.fetch import fetch_quote_only, fetch_ticker, save_desc_cache
 from src.render import render_digest, render_index, render_ticker_page
 
 REPO_FULL = os.environ.get("GITHUB_REPOSITORY", "shwayneg-lab/NeedhamEmail")
@@ -30,12 +34,73 @@ SKIP_TIME_CHECK = os.environ.get("DIGEST_SKIP_TIME_CHECK") == "1"
 
 FULL_CACHE_PATH = Path("state/full_data.json")
 HISTORY_PATH = Path("state/price_history.json")
+CAPS_PATH = Path("state/market_caps.json")
+MACRO_FILE = os.environ.get("MACRO_FILE", "macro_watchlist.csv")
 HISTORY_MAX_DAYS = 30
+STALE_DAYS = 3
 
 
 def load_coverage(path: str) -> list[dict]:
     with open(path) as f:
         return list(csv.DictReader(f))
+
+
+def load_macro(path: str) -> list[dict]:
+    p = Path(path)
+    if not p.exists():
+        return []
+    with open(p) as f:
+        return list(csv.DictReader(f))
+
+
+def load_market_caps() -> dict:
+    if CAPS_PATH.exists():
+        try:
+            return json.loads(CAPS_PATH.read_text() or "{}")
+        except json.JSONDecodeError:
+            return {}
+    return {}
+
+
+def fetch_macros(macro_rows: list[dict], history: dict, now_et: datetime) -> list[dict]:
+    """Fetch quote + update/compute 5d for each macro ETF."""
+    today = now_et.strftime("%Y-%m-%d")
+    results = []
+    for m in macro_rows:
+        q = fetch_quote_only(m["ticker"])
+        merged = {**m, **q}
+        if merged.get("price") is not None:
+            ticker_hist = history.setdefault(m["ticker"], {})
+            ticker_hist[today] = merged["price"]
+        prices = history.get(m["ticker"], {})
+        if merged.get("price") is not None and len(prices) >= 6:
+            dates = sorted(prices.keys())
+            if today in dates:
+                idx = dates.index(today)
+                if idx >= 5:
+                    five_ago = prices[dates[idx - 5]]
+                    if five_ago > 0:
+                        merged["pct_5d"] = round((merged["price"] / five_ago - 1) * 100, 2)
+        results.append(merged)
+    return results
+
+
+def stale_tickers(full_cache: dict, now_utc: datetime) -> set[str]:
+    """Tickers whose cached deep data is older than STALE_DAYS."""
+    stale = set()
+    cutoff = now_utc - timedelta(days=STALE_DAYS)
+    for ticker, entry in full_cache.items():
+        updated = entry.get("updated")
+        if not updated:
+            stale.add(ticker)
+            continue
+        try:
+            dt = datetime.fromisoformat(updated)
+            if dt < cutoff:
+                stale.add(ticker)
+        except ValueError:
+            stale.add(ticker)
+    return stale
 
 
 def _empty_result(ticker: str) -> dict:
@@ -208,18 +273,42 @@ def main() -> int:
     n_5d = sum(1 for r in results if r.get("pct_5d") is not None)
     print(f"5-day available for {n_5d}/{len(results)} tickers")
 
+    market_caps = load_market_caps()
+    print(f"Loaded market caps for {len(market_caps)} tickers")
+
+    macro_rows = load_macro(MACRO_FILE)
+    macro_results = []
+    if macro_rows:
+        print(f"Fetching {len(macro_rows)} macro tickers")
+        macro_results = fetch_macros(macro_rows, history, now_et)
+        save_price_history(history, now_et)
+    macro = build_macro(macro_results)
+
     watchlist = build_watchlist(results, mode, now_et)
     movers = build_movers(results)
     earnings = build_earnings_week(results, now_et)
+    split_movers = split_movers_by_cap(results, market_caps) if market_caps else None
+    sector_rotation = build_sector_rotation(results)
+
+    is_friday_pm = mode == "closing" and now_et.weekday() == 4
+    week_review = build_week_review(results, now_et, history) if is_friday_pm else None
 
     digest_tickers = set()
     digest_tickers.update(item["ticker"] for item in watchlist)
     digest_tickers.update(m["ticker"] for m in movers["gainers"])
     digest_tickers.update(m["ticker"] for m in movers["decliners"])
     digest_tickers.update(e["ticker"] for e in earnings)
+    if split_movers:
+        for bucket in (split_movers["large"], split_movers["small"]):
+            digest_tickers.update(m["ticker"] for m in bucket["gainers"])
+            digest_tickers.update(m["ticker"] for m in bucket["decliners"])
+
+    full_cache = load_full_cache()
+    stale = stale_tickers(full_cache, datetime.utcnow()) & {r["ticker"] for r in results}
+    digest_tickers |= stale
+    print(f"Refreshing {len(stale)} stale (>{STALE_DAYS}d) cached tickers")
 
     print(f"Pass 2: deep fetch for {len(digest_tickers)} digest-relevant tickers")
-    full_cache = load_full_cache()
     full_cache = fetch_deep_tickers(digest_tickers, full_cache)
     save_full_cache(full_cache)
     merge_cache_into_results(results, full_cache)
@@ -234,7 +323,10 @@ def main() -> int:
         f"Watchlist: {len(watchlist)} | "
         f"Gainers/Decliners: {len(movers['gainers'])}/{len(movers['decliners'])} | "
         f"Earnings window: {len(earnings)} | "
-        f"New actions: {len(new_actions)}"
+        f"New actions: {len(new_actions)} | "
+        f"Macro: {len(macro)} | "
+        f"Sector rotation: {len(sector_rotation['leaders'])}/{len(sector_rotation['laggards'])} | "
+        f"Week review: {'yes' if week_review else 'no'}"
     )
 
     tickers_dir = Path("docs/tickers")
@@ -247,7 +339,13 @@ def main() -> int:
 
     subject_tag = "AM" if mode == "morning" else "PM"
     subject = f"Needham Digest — {now_et:%a %b %d} {subject_tag}"
-    email_html = render_digest(mode, watchlist, movers, earnings, new_actions, now_et, PAGES_BASE)
+    email_html = render_digest(
+        mode, watchlist, movers, earnings, new_actions, now_et, PAGES_BASE,
+        macro=macro,
+        sector_rotation=sector_rotation,
+        split_movers=split_movers,
+        week_review=week_review,
+    )
     Path("docs/latest.html").write_text(email_html)
 
     if SKIP_EMAIL:

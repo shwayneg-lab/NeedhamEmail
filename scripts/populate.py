@@ -26,6 +26,7 @@ import yfinance as yf
 COVERAGE = Path("coverage.csv")
 DESC_PATH = Path("state/descriptions.json")
 HISTORY_PATH = Path("state/price_history.json")
+CAPS_PATH = Path("state/market_caps.json")
 
 
 def load_existing(path: Path) -> dict:
@@ -48,11 +49,19 @@ def main():
         for row in csv.DictReader(f):
             tickers.append(row["ticker"])
 
+    macro_path = Path("macro_watchlist.csv")
+    if macro_path.exists():
+        with open(macro_path) as f:
+            macro_tickers = [row["ticker"] for row in csv.DictReader(f)]
+        tickers.extend(macro_tickers)
+
     print(f"Bootstrapping {len(tickers)} tickers via yfinance (local)...")
     descs = load_existing(DESC_PATH)
     history = load_existing(HISTORY_PATH)
+    caps = load_existing(CAPS_PATH)
     ok_desc = 0
     ok_hist = 0
+    ok_cap = 0
 
     for i, ticker in enumerate(tickers, 1):
         try:
@@ -62,6 +71,11 @@ def main():
             if desc:
                 descs[ticker] = desc[:2500]
                 ok_desc += 1
+
+            mc = info.get("marketCap")
+            if isinstance(mc, (int, float)) and mc > 0:
+                caps[ticker] = int(mc)
+                ok_cap += 1
 
             hist = t.history(period="20d", auto_adjust=False)
             if not hist.empty:
@@ -76,20 +90,23 @@ def main():
             print(f"  {ticker} failed: {e}", file=sys.stderr)
 
         if i % 25 == 0:
-            print(f"  [{i}/{len(tickers)}] descs: {ok_desc} | history: {ok_hist}")
+            print(f"  [{i}/{len(tickers)}] descs: {ok_desc} | history: {ok_hist} | caps: {ok_cap}")
             save(DESC_PATH, descs)
             save(HISTORY_PATH, history)
+            save(CAPS_PATH, caps)
 
         time.sleep(0.3)
 
     save(DESC_PATH, descs)
     save(HISTORY_PATH, history)
+    save(CAPS_PATH, caps)
     print(f"\nDone.")
     print(f"  descriptions: {ok_desc}/{len(tickers)}")
     print(f"  price history: {ok_hist}/{len(tickers)}")
+    print(f"  market caps:  {ok_cap}/{len(tickers)}")
     total_dates = sum(len(v) for v in history.values())
     print(f"  total history entries: {total_dates}")
-    print(f"\nNext: git add state/ && git commit -m 'Bootstrap descriptions + history' && git push")
+    print(f"\nNext: git add state/ && git commit -m 'Bootstrap descriptions + history + caps' && git push")
 
 
 if __name__ == "__main__":

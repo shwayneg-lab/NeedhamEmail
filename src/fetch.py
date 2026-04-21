@@ -119,6 +119,22 @@ def _load_earnings():
     _earnings_cache_loaded = True
 
 
+def fetch_quote_only(ticker: str) -> dict:
+    """Lightweight: just /quote. For macro ETFs where we don't need profile/news."""
+    out = {"ticker": ticker, "price": None, "pct_1d": None, "pct_5d": None}
+    try:
+        q = _finnhub("/quote", symbol=ticker)
+        price = q.get("c")
+        pct_1d = q.get("dp")
+        if isinstance(price, (int, float)) and price > 0:
+            out["price"] = round(float(price), 2)
+        if isinstance(pct_1d, (int, float)) and abs(pct_1d) < 30:
+            out["pct_1d"] = round(float(pct_1d), 2)
+    except Exception as e:
+        print(f"  {ticker} quote failed: {e}")
+    return out
+
+
 def fetch_ticker(ticker: str, deep: bool = True) -> dict:
     """
     Fetch per-ticker data.
