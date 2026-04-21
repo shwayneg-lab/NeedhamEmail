@@ -243,12 +243,15 @@ def main() -> int:
             print(f"Weekend ({now_et:%a}), skipping")
             return 0
         hour = now_et.hour
-        # Windows are wide (4-hour) because GitHub cron often delays runs 15-45 min.
-        if mode == "morning" and hour not in (6, 7, 8, 9):
-            print(f"Not in morning window 6-9am ET (hour={hour}), skipping")
+        # Morning targets 7 AM ET; window 7-9 tolerates GitHub cron delays.
+        # The 6 AM EST cron is excluded so EST runs land at 7 AM (via 12 UTC cron).
+        if mode == "morning" and hour not in (7, 8, 9):
+            print(f"Not in morning window 7-9am ET (hour={hour}), skipping")
             return 0
-        if mode == "closing" and hour not in (16, 17, 18, 19):
-            print(f"Not in closing window 4-7pm ET (hour={hour}), skipping")
+        # Closing targets 5:30 PM ET; window 17-19 tolerates delays.
+        # The 4:30 PM EST cron is excluded so EST runs land at 5:30 PM (via 22:30 UTC cron).
+        if mode == "closing" and hour not in (17, 18, 19):
+            print(f"Not in closing window 5-7pm ET (hour={hour}), skipping")
             return 0
 
         # Per-day dedupe: two crons cover DST, and only one should actually send.

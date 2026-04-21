@@ -3,6 +3,7 @@ name: Daily Digest
 on:
   schedule:
     # 7:00 AM ET — 11:00 UTC during EDT (Mar-Nov), 12:00 UTC during EST (Nov-Mar)
+    # Both fire year-round; the "wrong" one for the current DST skips via the ET-hour gate.
     - cron: '0 11 * * 1-5'
     - cron: '0 12 * * 1-5'
     # 5:30 PM ET — 21:30 UTC during EDT, 22:30 UTC during EST
