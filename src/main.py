@@ -5,7 +5,7 @@ import csv
 import json
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import pytz
@@ -29,6 +29,8 @@ SKIP_EMAIL = os.environ.get("DIGEST_SKIP_EMAIL") == "1"
 SKIP_TIME_CHECK = os.environ.get("DIGEST_SKIP_TIME_CHECK") == "1"
 
 FULL_CACHE_PATH = Path("state/full_data.json")
+HISTORY_PATH = Path("state/price_history.json")
+HISTORY_MAX_DAYS = 30
 
 
 def load_coverage(path: str) -> list[dict]:
@@ -50,8 +52,47 @@ def _empty_result(ticker: str) -> dict:
         "description": "",
         "news": [],
         "upgrades": [],
-        "price_check_warning": False,
     }
+
+
+def load_price_history() -> dict:
+    if HISTORY_PATH.exists():
+        try:
+            return json.loads(HISTORY_PATH.read_text() or "{}")
+        except json.JSONDecodeError:
+            return {}
+    return {}
+
+
+def save_price_history(history: dict, now_et: datetime):
+    cutoff = (now_et.date() - timedelta(days=HISTORY_MAX_DAYS)).isoformat()
+    pruned = {
+        t: {d: p for d, p in prices.items() if d >= cutoff}
+        for t, prices in history.items()
+    }
+    HISTORY_PATH.parent.mkdir(exist_ok=True)
+    HISTORY_PATH.write_text(json.dumps(pruned, indent=2, sort_keys=True))
+
+
+def update_price_history_and_compute_5d(results: list[dict], history: dict, now_et: datetime):
+    today = now_et.strftime("%Y-%m-%d")
+    for r in results:
+        if r.get("price") is None:
+            continue
+        ticker_hist = history.setdefault(r["ticker"], {})
+        ticker_hist[today] = r["price"]
+    for r in results:
+        prices = history.get(r["ticker"], {})
+        if len(prices) < 6 or r.get("price") is None:
+            continue
+        dates = sorted(prices.keys())
+        if today not in dates:
+            continue
+        idx = dates.index(today)
+        if idx >= 5:
+            five_ago_price = prices[dates[idx - 5]]
+            if five_ago_price > 0:
+                r["pct_5d"] = round((r["price"] / five_ago_price - 1) * 100, 2)
 
 
 def fetch_shallow(coverage: list[dict]) -> list[dict]:
@@ -70,6 +111,13 @@ def fetch_shallow(coverage: list[dict]) -> list[dict]:
         if i % 50 == 0:
             print(f"[{i}/{len(coverage)}] shallow fetched", flush=True)
     results.sort(key=lambda r: r["ticker"])
+    n_price = sum(1 for r in results if r.get("price") is not None)
+    n_1d = sum(1 for r in results if r.get("pct_1d") is not None)
+    n_desc = sum(1 for r in results if r.get("description"))
+    print(
+        f"Shallow coverage — price: {n_price}/{len(results)} | "
+        f"1d: {n_1d} | desc: {n_desc}"
+    )
     return results
 
 
@@ -149,9 +197,16 @@ def main() -> int:
         except json.JSONDecodeError:
             prev_state = {}
 
-    print("Pass 1: shallow fetch (quote + 5-day + description)")
+    print("Pass 1: shallow fetch (quote + description)")
     results = fetch_shallow(coverage)
     save_desc_cache()
+
+    print("Updating local price history + computing 5-day moves")
+    history = load_price_history()
+    update_price_history_and_compute_5d(results, history, now_et)
+    save_price_history(history, now_et)
+    n_5d = sum(1 for r in results if r.get("pct_5d") is not None)
+    print(f"5-day available for {n_5d}/{len(results)} tickers")
 
     watchlist = build_watchlist(results, mode, now_et)
     movers = build_movers(results)

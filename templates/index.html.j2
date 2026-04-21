@@ -8,11 +8,13 @@
 body { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; max-width: 1100px; margin: 0 auto; padding: 32px 24px; color: #1a1a1a; line-height: 1.5; }
 h1 { margin: 0 0 4px 0; font-size: 28px; letter-spacing: -0.02em; }
 .meta { color: #666; margin-bottom: 24px; font-size: 14px; }
-h2 { font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 28px; padding-bottom: 4px; border-bottom: 1px solid #e5e5e5; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 4px 16px; font-size: 14px; margin-top: 8px; }
+h2 { font-size: 13px; color: #333; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 32px; padding-bottom: 4px; border-bottom: 1px solid #d0d0d0; }
+h3 { font-size: 12px; color: #666; margin-top: 16px; margin-bottom: 6px; font-weight: 600; letter-spacing: 0.02em; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 4px 16px; font-size: 14px; margin-top: 4px; margin-bottom: 10px; }
 .item { padding: 2px 0; }
 a { color: #0066cc; text-decoration: none; font-weight: 600; font-variant-numeric: tabular-nums; }
 a:hover { text-decoration: underline; }
+.count { color: #aaa; font-weight: normal; }
 </style>
 </head>
 <body>
@@ -23,12 +25,19 @@ a:hover { text-decoration: underline; }
 {% for r in rows %}{% set _ = by_sector.setdefault(r.sector or "—", []).append(r) %}{% endfor %}
 
 {% for sector, items in by_sector | dictsort %}
-<h2>{{ sector }} <span style="color: #aaa; font-weight: normal;">({{ items | length }})</span></h2>
+<h2>{{ sector }} <span class="count">({{ items | length }})</span></h2>
+
+{% set by_analyst = {} %}
+{% for r in items %}{% set _ = by_analyst.setdefault(r.analyst or "—", []).append(r) %}{% endfor %}
+
+{% for analyst, a_items in by_analyst | dictsort %}
+<h3>{{ analyst }} <span class="count">({{ a_items | length }})</span></h3>
 <div class="grid">
-{% for r in items | sort(attribute="ticker") %}
+{% for r in a_items | sort(attribute="ticker") %}
   <div class="item"><a href="tickers/{{ r.ticker }}.html">{{ r.ticker }}</a></div>
 {% endfor %}
 </div>
+{% endfor %}
 {% endfor %}
 </body>
 </html>

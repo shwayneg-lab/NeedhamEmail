@@ -1,4 +1,4 @@
-"""Finnhub (primary) + Stooq (5-day + price cross-check) fetcher."""
+"""Finnhub-based fetcher. 5-day history is built locally from past runs (see main.py)."""
 from __future__ import annotations
 
 import json
@@ -6,15 +6,12 @@ import os
 import threading
 import time
 from datetime import datetime, timedelta, timezone
-from io import StringIO
 from pathlib import Path
 
-import pandas as pd
 import requests
 
 FINNHUB_KEY = os.environ.get("FINNHUB_API_KEY", "")
 FINNHUB_BASE = "https://finnhub.io/api/v1"
-STOOQ_BASE = "https://stooq.com/q/d/l"
 
 SESSION = requests.Session()
 SESSION.headers.update({"User-Agent": "NeedhamDigest/1.0"})
@@ -57,22 +54,6 @@ def _finnhub(path: str, **params):
         r = SESSION.get(f"{FINNHUB_BASE}{path}", params=params, timeout=15)
     r.raise_for_status()
     return r.json()
-
-
-def _stooq_history(ticker: str) -> pd.DataFrame | None:
-    try:
-        sym = ticker.lower().replace(".", "-") + ".us"
-        url = f"{STOOQ_BASE}/?s={sym}&i=d"
-        r = SESSION.get(url, timeout=15)
-        if r.status_code != 200 or not r.text or "Date" not in r.text[:50]:
-            return None
-        df = pd.read_csv(StringIO(r.text))
-        if df.empty or "Close" not in df.columns:
-            return None
-        df["Date"] = pd.to_datetime(df["Date"])
-        return df.sort_values("Date").tail(15)
-    except Exception:
-        return None
 
 
 def rating_label(mean: float) -> str:
@@ -160,7 +141,6 @@ def fetch_ticker(ticker: str, deep: bool = True) -> dict:
         "description": _desc_cache.get(ticker, ""),
         "news": [],
         "upgrades": [],
-        "price_check_warning": False,
     }
 
     try:
@@ -173,18 +153,6 @@ def fetch_ticker(ticker: str, deep: bool = True) -> dict:
             out["pct_1d"] = round(float(pct_1d), 2)
     except Exception as e:
         print(f"  {ticker} quote failed: {e}")
-
-    try:
-        hist = _stooq_history(ticker)
-        if hist is not None and len(hist) >= 6:
-            stooq_last = float(hist["Close"].iloc[-1])
-            stooq_5d_ago = float(hist["Close"].iloc[-6])
-            if stooq_5d_ago > 0:
-                out["pct_5d"] = round((stooq_last / stooq_5d_ago - 1) * 100, 2)
-            if out["price"] and abs(out["price"] - stooq_last) / stooq_last > 0.02:
-                out["price_check_warning"] = True
-    except Exception as e:
-        print(f"  {ticker} stooq failed: {e}")
 
     if not out["description"]:
         try:
@@ -221,6 +189,11 @@ def fetch_ticker(ticker: str, deep: bool = True) -> dict:
             if 0.2 * out["price"] <= target <= 5 * out["price"]:
                 out["price_target"] = round(float(target), 2)
                 out["upside_pct"] = round((target / out["price"] - 1) * 100, 2)
+    except requests.HTTPError as e:
+        if e.response is not None and e.response.status_code == 403:
+            pass
+        else:
+            print(f"  {ticker} price-target failed: {e}")
     except Exception as e:
         print(f"  {ticker} price-target failed: {e}")
 
