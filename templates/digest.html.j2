@@ -1,3 +1,6 @@
+{%- macro tlink(ticker) -%}
+<a href="{{ pages_base }}/tickers/{{ ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ ticker }}</a> <a href="https://finance.yahoo.com/quote/{{ ticker }}" style="color: #888; font-size: 11px; text-decoration: none; font-weight: normal;">[Y]</a>
+{%- endmacro -%}
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"><title>Needham Digest</title></head>
@@ -43,7 +46,7 @@
 {% for item in watchlist %}
   <tr>
     <td style="padding: 8px 8px 8px 0; vertical-align: top; white-space: nowrap;">
-      <a href="{{ pages_base }}/tickers/{{ item.ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ item.ticker }}</a>
+      {{ tlink(item.ticker) }}
     </td>
     <td style="padding: 8px 0; color: #333;">
       {{ item.company_name }} <span style="color: #999;">· {{ item.sector }} · {{ item.analyst }}</span><br>
@@ -92,7 +95,7 @@
       <div style="color: #0a8040; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 8px;">GAINERS</div>
 {% for m in split_movers.large.gainers %}
       <div style="padding: 4px 0;">
-        <a href="{{ pages_base }}/tickers/{{ m.ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ m.ticker }}</a>
+        {{ tlink(m.ticker) }}
         <span style="color: #0a8040;">+{{ "%.1f" | format(m.pct_5d) }}%</span>
         <span style="color: #999; font-size: 12px;">· {{ m.sector }}</span>
       </div>
@@ -102,7 +105,7 @@
       <div style="color: #c22; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 8px;">DECLINERS</div>
 {% for m in split_movers.large.decliners %}
       <div style="padding: 4px 0;">
-        <a href="{{ pages_base }}/tickers/{{ m.ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ m.ticker }}</a>
+        {{ tlink(m.ticker) }}
         <span style="color: #c22;">{{ "%.1f" | format(m.pct_5d) }}%</span>
         <span style="color: #999; font-size: 12px;">· {{ m.sector }}</span>
       </div>
@@ -118,7 +121,7 @@
       <div style="color: #0a8040; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 8px;">GAINERS</div>
 {% for m in split_movers.small.gainers %}
       <div style="padding: 4px 0;">
-        <a href="{{ pages_base }}/tickers/{{ m.ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ m.ticker }}</a>
+        {{ tlink(m.ticker) }}
         <span style="color: #0a8040;">+{{ "%.1f" | format(m.pct_5d) }}%</span>
         <span style="color: #999; font-size: 12px;">· {{ m.sector }}</span>
       </div>
@@ -128,7 +131,7 @@
       <div style="color: #c22; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 8px;">DECLINERS</div>
 {% for m in split_movers.small.decliners %}
       <div style="padding: 4px 0;">
-        <a href="{{ pages_base }}/tickers/{{ m.ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ m.ticker }}</a>
+        {{ tlink(m.ticker) }}
         <span style="color: #c22;">{{ "%.1f" | format(m.pct_5d) }}%</span>
         <span style="color: #999; font-size: 12px;">· {{ m.sector }}</span>
       </div>
@@ -144,7 +147,7 @@
       <div style="color: #0a8040; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 8px;">TOP GAINERS</div>
 {% for m in movers.gainers %}
       <div style="padding: 4px 0;">
-        <a href="{{ pages_base }}/tickers/{{ m.ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ m.ticker }}</a>
+        {{ tlink(m.ticker) }}
         <span style="color: #0a8040;">+{{ "%.1f" | format(m.pct_5d) }}%</span>
         <span style="color: #999; font-size: 12px;">· {{ m.sector }}</span>
       </div>
@@ -154,7 +157,7 @@
       <div style="color: #c22; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 8px;">TOP DECLINERS</div>
 {% for m in movers.decliners %}
       <div style="padding: 4px 0;">
-        <a href="{{ pages_base }}/tickers/{{ m.ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ m.ticker }}</a>
+        {{ tlink(m.ticker) }}
         <span style="color: #c22;">{{ "%.1f" | format(m.pct_5d) }}%</span>
         <span style="color: #999; font-size: 12px;">· {{ m.sector }}</span>
       </div>
@@ -173,7 +176,7 @@
       <div style="color: #0a8040; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 8px;">BEST WEEK</div>
 {% for m in week_review.gainers %}
       <div style="padding: 4px 0;">
-        <a href="{{ pages_base }}/tickers/{{ m.ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ m.ticker }}</a>
+        {{ tlink(m.ticker) }}
         <span style="color: #0a8040;">+{{ "%.1f" | format(m.pct_week) }}%</span>
         <span style="color: #999; font-size: 12px;">· {{ m.sector }}</span>
       </div>
@@ -183,7 +186,7 @@
       <div style="color: #c22; font-weight: 600; font-size: 12px; letter-spacing: 0.05em; margin-bottom: 8px;">WORST WEEK</div>
 {% for m in week_review.decliners %}
       <div style="padding: 4px 0;">
-        <a href="{{ pages_base }}/tickers/{{ m.ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ m.ticker }}</a>
+        {{ tlink(m.ticker) }}
         <span style="color: #c22;">{{ "%.1f" | format(m.pct_week) }}%</span>
         <span style="color: #999; font-size: 12px;">· {{ m.sector }}</span>
       </div>
@@ -200,7 +203,7 @@
   <tr>
     <td style="padding: 6px 8px 6px 0; white-space: nowrap; color: #555; font-size: 13px; width: 90px; vertical-align: top;">{{ e.next_earnings }}</td>
     <td style="padding: 6px 0;">
-      <a href="{{ pages_base }}/tickers/{{ e.ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ e.ticker }}</a>
+      {{ tlink(e.ticker) }}
       {{ e.company_name }}
       <span style="color: #999; font-size: 13px;">· {{ e.analyst }}</span>
     </td>
@@ -218,7 +221,7 @@
   <tr>
     <td style="padding: 6px 8px 6px 0; white-space: nowrap; color: #555; font-size: 13px; width: 90px; vertical-align: top;">{{ a.date }}</td>
     <td style="padding: 6px 0;">
-      <a href="{{ pages_base }}/tickers/{{ a.ticker }}.html" style="color: #0066cc; font-weight: 600; text-decoration: none;">{{ a.ticker }}</a>
+      {{ tlink(a.ticker) }}
       <span style="color: #333;">{{ a.firm }}</span>
       {% if a.from and a.to %}<span style="color: #666;">· {{ a.from }} → {{ a.to }}</span>
       {% elif a.to %}<span style="color: #666;">· {{ a.to }}</span>{% endif %}

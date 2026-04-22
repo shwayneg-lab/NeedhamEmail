@@ -30,7 +30,7 @@ a:hover { text-decoration: underline; }
 <div class="header">
   <h1 class="ticker">{{ row.ticker }}</h1>
   <p class="company">{{ row.company_name }}</p>
-  <div class="meta">{{ row.sector }} · Needham analyst: <strong>{{ row.analyst }}</strong></div>
+  <div class="meta">{{ row.sector }} · Needham analyst: <strong>{{ row.analyst }}</strong> · <a href="https://finance.yahoo.com/quote/{{ row.ticker }}" target="_blank" style="color: #0066cc; font-weight: 600;">View live on Yahoo Finance →</a></div>
 </div>
 
 <div class="stats">
