@@ -346,13 +346,25 @@ def main() -> int:
         f"Week review: {'yes' if week_review else 'no'}"
     )
 
+    # Filter out zombies: tickers with no current price (likely delisted or bad symbol).
+    active = [r for r in results if r.get("price") is not None]
+    zombies = [r for r in results if r.get("price") is None]
+    if zombies:
+        zombie_tickers = sorted(r["ticker"] for r in zombies)
+        print(f"Skipped {len(zombies)} no-price tickers: {', '.join(zombie_tickers)}")
+
     tickers_dir = Path("docs/tickers")
     tickers_dir.mkdir(parents=True, exist_ok=True)
-    for row in results:
+    # Remove any existing ticker pages for zombies so old stale data doesn't linger.
+    for r in zombies:
+        stale_page = tickers_dir / f"{r['ticker']}.html"
+        if stale_page.exists():
+            stale_page.unlink()
+    for row in active:
         html = render_ticker_page(row, PAGES_BASE)
         (tickers_dir / f"{row['ticker']}.html").write_text(html)
-    Path("docs/index.html").write_text(render_index(results, PAGES_BASE))
-    print(f"Rendered {len(results)} ticker pages + index")
+    Path("docs/index.html").write_text(render_index(active, PAGES_BASE))
+    print(f"Rendered {len(active)} ticker pages + index ({len(zombies)} skipped)")
 
     subject_tag = "AM" if mode == "morning" else "PM"
     subject = f"Needham Digest — {now_et:%a %b %d} {subject_tag}"
