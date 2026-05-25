@@ -201,6 +201,18 @@
     "n_analysts": 41,
     "news": [
       {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=00b47cd14597f95bf27f7622c11bb810d621d5d1ef28936b0d1d7579840616ad",
+        "publisher": "Yahoo",
+        "title": "Analog Devices, Inc. (ADI) Anticipates Q3 Revenue Above Estimates"
+      },
+      {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=e565de5340b9d9d899fd2164396eb0cbb4b1caeb40984d8a0d91d25999e1dae8",
+        "publisher": "Benzinga",
+        "title": "A Congress Member Sold Up To $60K In Analog Devices Stock: Here's What You Need To Know"
+      },
+      {
         "date": "2026-05-24",
         "link": "https://finnhub.io/api/news?id=0c18ff0fa8396a5a462e6e07973d8c349bae4a09699c9af29cc18b71e9cbe406",
         "publisher": "Benzinga",
@@ -217,22 +229,10 @@
         "link": "https://finnhub.io/api/news?id=147876790f57d68246622f6bf485ba48ad1853d82d22e3704009ee148bf0d3a9",
         "publisher": "Yahoo",
         "title": "NXP Semiconductors and Himax Stocks Trade Up, What You Need To Know"
-      },
-      {
-        "date": "2026-05-23",
-        "link": "https://finnhub.io/api/news?id=725c4872f142ae169750c83d89a225ab1ffa882c20abcf21b0d76c2b90b5a722",
-        "publisher": "Yahoo",
-        "title": "Universal Display and Microchip Technology Shares Are Soaring, What You Need To Know"
-      },
-      {
-        "date": "2026-05-23",
-        "link": "https://finnhub.io/api/news?id=89efa2845c73850ed991e4fec6c436e0c97cd6e059af7302a22b21cd7ed63030",
-        "publisher": "Yahoo",
-        "title": "onsemi, Texas Instruments, and Impinj Shares Are Soaring, What You Need To Know"
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:03:40.544867",
+    "updated": "2026-05-25T22:44:49.926525",
     "upside_pct": null
   },
   "ADTN": {
@@ -271,7 +271,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:03:44.978814",
+    "updated": "2026-05-25T22:44:54.264943",
     "upside_pct": null
   },
   "AEIS": {
@@ -427,7 +427,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:04:02.314875",
+    "updated": "2026-05-25T22:44:58.613034",
     "upside_pct": null
   },
   "AGYS": {
@@ -583,7 +583,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:04:19.788887",
+    "updated": "2026-05-25T22:45:03.357559",
     "upside_pct": null
   },
   "ALC": {
@@ -924,7 +924,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:05:10.350120",
+    "updated": "2026-05-25T22:45:07.590003",
     "upside_pct": null
   },
   "AMBQ": {
@@ -963,7 +963,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:05:14.035295",
+    "updated": "2026-05-25T22:45:11.712104",
     "upside_pct": null
   },
   "AMKR": {
@@ -1286,38 +1286,38 @@
     "n_analysts": 45,
     "news": [
       {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=595127a214234e75de40acc0a7609fa210fa46c7a3f6c108b46f344b5f2e73de",
+        "publisher": "Yahoo",
+        "title": "Arm Holdings plc (ARM) to Face US Antitrust Probe over Chip Tech, Bloomberg News Reports"
+      },
+      {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=113b9cb44ecf411ff738f613a6ba5cd199e7dbd725bd19c34e75b3d1a8205dcf",
+        "publisher": "Yahoo",
+        "title": "Jim Cramer Discusses \u201cSilly\u201d Thing About Arm Holdings (ARM)"
+      },
+      {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=67f527c49fcae05647ef5241231d47053b4822c8dfa12c24cb5c3e006b82daf2",
+        "publisher": "Yahoo",
+        "title": "ARM Targets the AI Data Center Opportunity With New AGI CPU Push"
+      },
+      {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=a4f6b1374757086057a66def9156e46ea0edd1f120f7a23bb11701567d80073d",
+        "publisher": "Yahoo",
+        "title": "Arm Holdings (ARM) Soars 46% as Profits Seen Growing 5x"
+      },
+      {
         "date": "2026-05-24",
         "link": "https://finnhub.io/api/news?id=ceb6dd527acd5d29178c8d578c69f65f8faeb6930cb04f40d5af31a8d251ee2d",
         "publisher": "Yahoo",
         "title": "Arm Holdings (ARM) Valuation Check After Strong Recent Share Price Momentum"
-      },
-      {
-        "date": "2026-05-24",
-        "link": "https://finnhub.io/api/news?id=322fc397af17085b39ae4837c386d941a3b42768ca232af87e1a86cdde814d4a",
-        "publisher": "Yahoo",
-        "title": "Why Arm Stock Skyrocketed This Week"
-      },
-      {
-        "date": "2026-05-24",
-        "link": "https://finnhub.io/api/news?id=f14220067ba2f0ad58a336df99dac5950256c60940c78ffc7ba0a63e2d175c5b",
-        "publisher": "Yahoo",
-        "title": "Why Billionaire Stanley Druckenmiller Dumped Nvidia but Loaded Up on These 3 AI Infrastructure Stocks for the Next Boom"
-      },
-      {
-        "date": "2026-05-24",
-        "link": "https://finnhub.io/api/news?id=569b1534135a7fb18c8b38e1b5b54db688f668d484dccdb84178f54a364af385",
-        "publisher": "Benzinga",
-        "title": "D-Wave, Dell, And IonQ Are Among Top 10 Large-Cap Gainers Last Week (May 18-May 22): Are the Others in Your Portfolio?"
-      },
-      {
-        "date": "2026-05-23",
-        "link": "https://finnhub.io/api/news?id=db04aafe0e8c29a59347807abf74bf62722e609eb605cd50b56285d1ccde72d8",
-        "publisher": "Yahoo",
-        "title": "AGI CPU Demand Has Pushed ARM Stock to All-Time Highs. Wait for the Next Pullback Before You Buy."
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:05:53.266006",
+    "updated": "2026-05-25T22:45:16.064451",
     "upside_pct": null
   },
   "ARQT": {
@@ -1371,7 +1371,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:06:02.021407",
+    "updated": "2026-05-25T22:45:20.428437",
     "upside_pct": null
   },
   "ASUR": {
@@ -1520,7 +1520,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:06:28.143883",
+    "updated": "2026-05-25T22:45:24.821395",
     "upside_pct": null
   },
   "AUTL": {
@@ -1567,6 +1567,12 @@
     "n_analysts": 25,
     "news": [
       {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=481192b479029aeed9ee70e35a4aff542dbc533625dfa923f8c33ce9e86c577e",
+        "publisher": "Yahoo",
+        "title": "AeroVironment vs. RTX: Which Aerospace-Defense Stock Has the Edge?"
+      },
+      {
         "date": "2026-05-24",
         "link": "https://finnhub.io/api/news?id=05baa6beb2f905ddc018d4975b952ebb3eaaf8ca2a844a730d7bbaa879337d03",
         "publisher": "Yahoo",
@@ -1589,16 +1595,10 @@
         "link": "https://finnhub.io/api/news?id=3f3bdac47db028664ee1cd416db632d4f5f308bca295708b0c84b70c492d4d9d",
         "publisher": "SeekingAlpha",
         "title": "AeroVironment: A Mispriced Defense Growth Stock With Upside Into Earnings"
-      },
-      {
-        "date": "2026-05-21",
-        "link": "https://finnhub.io/api/news?id=20275c1a4df08742d11a9f9a08c5be615eeab4a92f379ffb3e0ce0ec2709644c",
-        "publisher": "Benzinga",
-        "title": "NASA Engineers Say New Rotor Breakthrough Could Enable Supersonic Helicopter Flight"
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:06:36.873686",
+    "updated": "2026-05-25T22:45:29.162404",
     "upside_pct": null
   },
   "AX": {
@@ -1711,7 +1711,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:06:54.327539",
+    "updated": "2026-05-25T22:45:33.513943",
     "upside_pct": null
   },
   "AZTA": {
@@ -2148,7 +2148,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:08:04.183194",
+    "updated": "2026-05-25T22:45:37.915542",
     "upside_pct": null
   },
   "BRZE": {
@@ -2187,7 +2187,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:08:08.515273",
+    "updated": "2026-05-25T22:45:42.260416",
     "upside_pct": null
   },
   "BSX": {
@@ -2673,7 +2673,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:09:01.201928",
+    "updated": "2026-05-25T22:45:46.625276",
     "upside_pct": null
   },
   "CHKP": {
@@ -2916,7 +2916,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:09:31.484310",
+    "updated": "2026-05-25T22:45:51.020853",
     "upside_pct": null
   },
   "CLSD": {
@@ -3368,7 +3368,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:10:23.823142",
+    "updated": "2026-05-25T22:45:55.368449",
     "upside_pct": null
   },
   "CRM": {
@@ -3377,37 +3377,37 @@
     "news": [
       {
         "date": "2026-05-25",
-        "link": "https://finnhub.io/api/news?id=e63bb7c31b02c4e0b72e6679f00fe8ee79d8818eef76eb6c6ac36cb3c0e64e77",
+        "link": "https://finnhub.io/api/news?id=cef5dc757eca8308c47b4f7c6635774c2f41e9f934dab4c6221a4fe3bea3154c",
         "publisher": "Yahoo",
-        "title": "PDD Set to Report Q1 Earnings: What's in Store for the Stock?"
+        "title": "Veeva Systems' AI & Vault CRM Strength Signal More Upside Ahead"
       },
       {
-        "date": "2026-05-24",
-        "link": "https://finnhub.io/api/news?id=597b06a0c467cd7148341b84eca51feaf62c0591db06c875782b21dab3fbf2a5",
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=343036de8a3a57753c2189da31de6fc7c85a9a78b40c02a365d336ae3052475c",
         "publisher": "Yahoo",
-        "title": "Home Sales, Inflation, Costco, HP, Salesforce, and More to Watch This Week"
+        "title": "Appian's Cloud Revenues Jump 25%: Is the Growth Rate Sustainable?"
       },
       {
-        "date": "2026-05-24",
-        "link": "https://finnhub.io/api/news?id=4515d5f432d08a909a30b5e8dce465518c5fa273d8a74cfdf8033844c3979def",
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=2b4655b4475bcf43568fa9e58ec10dd63b50144e7a82ca2d6a1b22f89f30542a",
         "publisher": "Yahoo",
-        "title": "GDP, Earnings and Other Key Things to Watch this Week"
+        "title": "SentinelOne to Report Q1 Earnings: What's in Store for the Stock?"
       },
       {
-        "date": "2026-05-24",
-        "link": "https://finnhub.io/api/news?id=bfcb912ffabec78d3c90eed4ed740f7d3f42be0a4ba4756df13ad67df37fab22",
-        "publisher": "SeekingAlpha",
-        "title": "Wall Street Brunch: The Last Core PCE Hurrah?"
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=2b7ca65e78c9b60867ffda9663d56588f53a9438bf261113ad57d8344424f77a",
+        "publisher": "Yahoo",
+        "title": "Everpure Gears Up to Report Q1 Earnings: What's in the Offing?"
       },
       {
-        "date": "2026-05-24",
-        "link": "https://finnhub.io/api/news?id=a1acbc8b2ea1a8fc3e19c515b95102a7d8042f4ecb66d416d91cecae5b4e619a",
-        "publisher": "Benzinga",
-        "title": "Top 3 Catalysts For Nasdaq 100 And Dow Jones Indices This Week"
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=13b48b1eeee69f17139966ac51d64e1ec003c1a0e9d7b7940592791ac0eaaad4",
+        "publisher": "Yahoo",
+        "title": "Agentforce to Boost Salesforce's Subscription Revenue Growth in Q1"
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:10:28.279940",
+    "updated": "2026-05-25T22:45:59.739148",
     "upside_pct": null
   },
   "CRMD": {
@@ -3485,7 +3485,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:10:36.899152",
+    "updated": "2026-05-25T22:46:04.062722",
     "upside_pct": null
   },
   "CROX": {
@@ -3760,6 +3760,12 @@
     "n_analysts": 32,
     "news": [
       {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=327b3bb83d8269785fe895bf0d65330a8354d7637966d8a08551265e82edc9e2",
+        "publisher": "Yahoo",
+        "title": "Analysts Update Carvana (CVNA) Price Targets After Stock Split"
+      },
+      {
         "date": "2026-05-22",
         "link": "https://finnhub.io/api/news?id=4671f415978e477690af07b4cd018ce7fbbb859ed8999463faabd3d3be564e5d",
         "publisher": "ChartMill",
@@ -3782,16 +3788,10 @@
         "link": "https://finnhub.io/api/news?id=af68229009a31ad5a536afe9a7930d67982f2cfff864d00e3b20e2f832ca3211",
         "publisher": "SeekingAlpha",
         "title": "Tracking Renaissance Technologies (RenTec) 13F Portfolio - Q1 2026 Update"
-      },
-      {
-        "date": "2026-05-21",
-        "link": "https://finnhub.io/api/news?id=d6c09c2ff34dc45dfbb090b31272b91792ed63dcd606f86cd04f339405913b55",
-        "publisher": "Yahoo",
-        "title": "Chewy, Carvana, and Coursera Stocks Trade Down, What You Need To Know"
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:11:03.084141",
+    "updated": "2026-05-25T22:46:08.439175",
     "upside_pct": null
   },
   "CXDO": {
@@ -3923,7 +3923,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:11:20.572184",
+    "updated": "2026-05-25T22:46:12.803274",
     "upside_pct": null
   },
   "DCBO": {
@@ -4034,7 +4034,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:11:29.281539",
+    "updated": "2026-05-25T22:46:17.202450",
     "upside_pct": null
   },
   "DDOG": {
@@ -4259,7 +4259,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:11:59.826236",
+    "updated": "2026-05-25T22:46:21.518406",
     "upside_pct": null
   },
   "DOCN": {
@@ -4493,7 +4493,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:12:17.276563",
+    "updated": "2026-05-25T22:46:25.888344",
     "upside_pct": null
   },
   "DUOL": {
@@ -4763,7 +4763,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:12:47.833349",
+    "updated": "2026-05-25T22:46:30.341025",
     "upside_pct": null
   },
   "EPAM": {
@@ -4888,7 +4888,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:13:05.318027",
+    "updated": "2026-05-25T22:46:34.612147",
     "upside_pct": null
   },
   "ETOR": {
@@ -5152,7 +5152,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:13:40.240143",
+    "updated": "2026-05-25T22:46:39.007349",
     "upside_pct": null
   },
   "FA": {
@@ -5206,7 +5206,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:13:48.928162",
+    "updated": "2026-05-25T22:46:43.363004",
     "upside_pct": null
   },
   "FFIV": {
@@ -5323,7 +5323,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:14:02.171831",
+    "updated": "2026-05-25T22:46:47.705068",
     "upside_pct": null
   },
   "FIVN": {
@@ -5395,7 +5395,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:14:10.740694",
+    "updated": "2026-05-25T22:46:52.091385",
     "upside_pct": null
   },
   "FLUT": {
@@ -5709,7 +5709,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:14:37.724307",
+    "updated": "2026-05-25T22:46:56.445419",
     "upside_pct": null
   },
   "FVRR": {
@@ -5843,7 +5843,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:14:58.751535",
+    "updated": "2026-05-25T22:47:00.803481",
     "upside_pct": null
   },
   "GERN": {
@@ -5915,7 +5915,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:15:04.496457",
+    "updated": "2026-05-25T22:47:05.176541",
     "upside_pct": null
   },
   "GHRS": {
@@ -6065,7 +6065,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:15:23.368195",
+    "updated": "2026-05-25T22:47:09.520002",
     "upside_pct": null
   },
   "GLBE": {
@@ -6190,6 +6190,24 @@
     "n_analysts": 28,
     "news": [
       {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=c1808c8defe1aab1cd2ed5708ed2c5a68360988ff08413d86bbcad90fbbfedf1",
+        "publisher": "SeekingAlpha",
+        "title": "Tracking John Rogers' Ariel Investments Portfolio - Q1 2026 Update"
+      },
+      {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=15c296879e3913932994d20d3cef032f55491893cf6aca5ca5abeb41d4aa2fb7",
+        "publisher": "Yahoo",
+        "title": "Are Industrial Products Stocks Lagging  Constellium (CSTM) This Year?"
+      },
+      {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=0a1f68dd808539290f716e3c3f6e5d9328b02e787046a6f0f45fd8644dabb4c8",
+        "publisher": "Yahoo",
+        "title": "Generac Holdings (GNRC) Crossed Above the 20-Day Moving Average: What That Means for Investors"
+      },
+      {
         "date": "2026-05-24",
         "link": "https://finnhub.io/api/news?id=31e797593cd10d77443f6cdec7f33831900f8666f8f1e80513719dadce5d4900",
         "publisher": "Yahoo",
@@ -6200,28 +6218,10 @@
         "link": "https://finnhub.io/api/news?id=98680975c730af6199f4437da0cbe9d746d8ce1af713c765fa5ede62ed372775",
         "publisher": "Yahoo",
         "title": "Generac (GNRC) Stock Trades Up, Here Is Why"
-      },
-      {
-        "date": "2026-05-22",
-        "link": "https://finnhub.io/api/news?id=d80ade9d98ab355a2ea6eda579f4452c128046b85cc96489e17df947dc64416c",
-        "publisher": "Fintel",
-        "title": "Jefferies Upgrades Generac Holdings (GNRC)"
-      },
-      {
-        "date": "2026-05-22",
-        "link": "https://finnhub.io/api/news?id=eb05c3caa22967a02941ff2077d9b6ce973a24fabd1d01ddf24ceafbbf50625f",
-        "publisher": "Yahoo",
-        "title": "Can Generac (GNRC) Turn Data Center Backup Demand Into a Durable Commercial Power Advantage?"
-      },
-      {
-        "date": "2026-05-22",
-        "link": "https://finnhub.io/api/news?id=1b98bcdd92b14928c7f6249e5545768aa61e3209cf002683662bfb7502fca657",
-        "publisher": "ChartMill",
-        "title": "What's going on in today's session: S&P500 movers"
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:15:48.225851",
+    "updated": "2026-05-25T22:47:13.952292",
     "upside_pct": null
   },
   "GOOGL": {
@@ -6346,6 +6346,12 @@
     "n_analysts": 15,
     "news": [
       {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=f006add1cfcde6a1633d715fc919199f4cf25d3c42319e9543a03c41b576887e",
+        "publisher": "Yahoo",
+        "title": "Why Haemonetics (HAE) Is Up 14.3% After Earnings Beat And BofA Upgrade And What's Next"
+      },
+      {
         "date": "2026-05-23",
         "link": "https://finnhub.io/api/news?id=00ee336c98ec31db287966878f05d096dda644d83f35faa441613d51ec9a5e75",
         "publisher": "Yahoo",
@@ -6368,16 +6374,10 @@
         "link": "https://finnhub.io/api/news?id=59d0da47691e32770b63f23fc807266baaffb53fa8d5f60471d6f063d3f0e5ab",
         "publisher": "Yahoo",
         "title": "Investing in Haemonetics (HAE)? Don't Miss Assessing Its International Revenue Trends"
-      },
-      {
-        "date": "2026-05-22",
-        "link": "https://finnhub.io/api/news?id=0336e6b09f495dd06da3240c1ecd78af43a5b31c6982c6a3267dba540f21ed73",
-        "publisher": "Benzinga",
-        "title": "This Texas Instruments Analyst Turns Bullish; Here Are Top 4 Upgrades For Friday"
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:16:00.716340",
+    "updated": "2026-05-25T22:47:18.258498",
     "upside_pct": null
   },
   "HIMS": {
@@ -6424,6 +6424,12 @@
     "n_analysts": 13,
     "news": [
       {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=02ba1a5cf1b55adf1b353c5c32def83dd969bbdba6f0cb9883098fabeed7950b",
+        "publisher": "ChartMill",
+        "title": "Wondering what's happening in today's after-hours session?"
+      },
+      {
         "date": "2026-05-22",
         "link": "https://finnhub.io/api/news?id=b5c344e50af2ce5be687732fecec18a367a68d623a5765d59e10a7b5076b1822",
         "publisher": "Benzinga",
@@ -6446,16 +6452,10 @@
         "link": "https://finnhub.io/api/news?id=45ad8a439dcb3c64e1ed84c8d12808903fcb96b31aeea6c481b8b77dd4d954bc",
         "publisher": "SeekingAlpha",
         "title": "Harmonic: The Broadband Thesis Is Connecting (Rating Upgrade)"
-      },
-      {
-        "date": "2026-05-13",
-        "link": "https://finnhub.io/api/news?id=e10412ddfb08a35b6fadcdeb8c26eb366b1bf21af5b3b7d76f8dc55a13500bfb",
-        "publisher": "Finnhub",
-        "title": "Inter Venezuela Taps Harmonic for PON-Based Mobile Backhaul Service to Support 5G Growth"
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:16:09.435479",
+    "updated": "2026-05-25T22:47:22.663840",
     "upside_pct": null
   },
   "HNGE": {
@@ -6719,7 +6719,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:16:40.056139",
+    "updated": "2026-05-25T22:47:26.988510",
     "upside_pct": null
   },
   "ICUI": {
@@ -6906,10 +6906,22 @@
     "n_analysts": 20,
     "news": [
       {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=55b44a2717056ba1dccfa9882505ecff075f149a1ab4607d8cc7f5c83b3580e9",
+        "publisher": "Yahoo",
+        "title": "NVIDIA Extends AI Story With Quantum Center And Alice And Bob Bet"
+      },
+      {
         "date": "2026-05-24",
         "link": "https://finnhub.io/api/news?id=569b1534135a7fb18c8b38e1b5b54db688f668d484dccdb84178f54a364af385",
         "publisher": "Benzinga",
         "title": "D-Wave, Dell, And IonQ Are Among Top 10 Large-Cap Gainers Last Week (May 18-May 22): Are the Others in Your Portfolio?"
+      },
+      {
+        "date": "2026-05-24",
+        "link": "https://finnhub.io/api/news?id=cd9e498adfcb715da2968ae277267faca724009d54182922b3c8ee0af70086ca",
+        "publisher": "Yahoo",
+        "title": "TTM Technologies, IonQ, and Everpure Shares Are Soaring, What You Need To Know"
       },
       {
         "date": "2026-05-23",
@@ -6919,25 +6931,13 @@
       },
       {
         "date": "2026-05-23",
-        "link": "https://finnhub.io/api/news?id=f3a8b71db7553cad42167da97f3c7567e2ccf4a4a79d6007373d362610e113b1",
-        "publisher": "SeekingAlpha",
-        "title": "IonQ: Misleading Quantum Growth"
-      },
-      {
-        "date": "2026-05-23",
-        "link": "https://finnhub.io/api/news?id=7218639275817f8658f2c25f9243319c8ea9210ec1b91c43c44ab4fa734fb69c",
-        "publisher": "SeekingAlpha",
-        "title": "Quantum Computing Company IonQ Is A Buy (Technical Analysis)"
-      },
-      {
-        "date": "2026-05-22",
-        "link": "https://finnhub.io/api/news?id=857b908b6df79ecc72ff3b1fdae528ce74ee1810a8a551a5b4939dd14c876292",
-        "publisher": "SeekingAlpha",
-        "title": "Questions About Quantum"
+        "link": "https://finnhub.io/api/news?id=cf027e6d3b5b002c3d2ba8f0cf3638481f6a562cd536313ed068abb8fbbe2448",
+        "publisher": "Yahoo",
+        "title": "IonQ (IONQ) Valuation Check After Quantum Funding Buzz And SkyWater Deal Approval"
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:17:06.188367",
+    "updated": "2026-05-25T22:47:31.370264",
     "upside_pct": null
   },
   "IPGP": {
@@ -7806,7 +7806,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:18:55.248315",
+    "updated": "2026-05-25T22:47:35.754256",
     "upside_pct": null
   },
   "LUCD": {
@@ -7845,7 +7845,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:18:59.658882",
+    "updated": "2026-05-25T22:47:40.131487",
     "upside_pct": null
   },
   "LULU": {
@@ -8036,7 +8036,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:19:25.807896",
+    "updated": "2026-05-25T22:47:44.491039",
     "upside_pct": null
   },
   "MEG": {
@@ -8044,7 +8044,7 @@
     "n_analysts": null,
     "news": [],
     "price_target": null,
-    "updated": "2026-05-25T14:19:30.179300",
+    "updated": "2026-05-25T22:47:48.801865",
     "upside_pct": null
   },
   "META": {
@@ -8536,6 +8536,18 @@
     "news": [
       {
         "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=0e2f8c0f69e37467d3947cbc981ab520688535f9cacddec551b041128ab31428",
+        "publisher": "Yahoo",
+        "title": "Oppenheimer Raises its Price Target on Marvell (MRVL)"
+      },
+      {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=943ff3f30be80a4bc9c578a81c3eed248555d2f9bfac5987504304bbb5ea348f",
+        "publisher": "Yahoo",
+        "title": "Citi Lifts Price Target on Marvell Technology, Inc. (MRVL)"
+      },
+      {
+        "date": "2026-05-25",
         "link": "https://finnhub.io/api/news?id=0fae78711cf7e6581fbf2cfa1ca5e950e84f1c925f3f2f8ca7548eab1a93ab8d",
         "publisher": "Yahoo",
         "title": "BofA\u2019s Vivek Arya Sees Nvidia at $350 as Agentic AI Drives an \u201cUnprecedented\u201d Chip Cycle"
@@ -8547,26 +8559,14 @@
         "title": "Here's How Much Marvell Stock Is Expected to Move After Earnings"
       },
       {
-        "date": "2026-05-24",
-        "link": "https://finnhub.io/api/news?id=3727e804f2df9f5256bd896ee2db51355a9040a548227146bddcdd9923a06786",
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=8d19621e07a712e8652f2afce1a0117f591df83d8e5a10a93f0209ec81abd783",
         "publisher": "Yahoo",
-        "title": "Dow Jones Futures Rise, Oil Prices Fall: Trump Says No 'Rush' For Iran Deal"
-      },
-      {
-        "date": "2026-05-24",
-        "link": "https://finnhub.io/api/news?id=597b06a0c467cd7148341b84eca51feaf62c0591db06c875782b21dab3fbf2a5",
-        "publisher": "Yahoo",
-        "title": "Home Sales, Inflation, Costco, HP, Salesforce, and More to Watch This Week"
-      },
-      {
-        "date": "2026-05-24",
-        "link": "https://finnhub.io/api/news?id=4515d5f432d08a909a30b5e8dce465518c5fa273d8a74cfdf8033844c3979def",
-        "publisher": "Yahoo",
-        "title": "GDP, Earnings and Other Key Things to Watch this Week"
+        "title": "Option Volatility And Earnings Report For May 25-29"
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:20:31.313913",
+    "updated": "2026-05-25T22:47:53.204686",
     "upside_pct": null
   },
   "MTSI": {
@@ -8782,7 +8782,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:20:58.016907",
+    "updated": "2026-05-25T22:47:57.568951",
     "upside_pct": null
   },
   "NBIX": {
@@ -8848,7 +8848,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:21:06.738222",
+    "updated": "2026-05-25T22:48:01.894915",
     "upside_pct": null
   },
   "NEO": {
@@ -9126,7 +9126,7 @@
     "n_analysts": 9,
     "news": [],
     "price_target": null,
-    "updated": "2026-05-25T14:21:46.047218",
+    "updated": "2026-05-25T22:48:06.262206",
     "upside_pct": null
   },
   "NRIX": {
@@ -9212,7 +9212,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:21:59.303250",
+    "updated": "2026-05-25T22:48:10.627114",
     "upside_pct": null
   },
   "NVDA": {
@@ -9368,7 +9368,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:22:16.579779",
+    "updated": "2026-05-25T22:48:15.023936",
     "upside_pct": null
   },
   "NXPI": {
@@ -9380,6 +9380,12 @@
         "link": "https://finnhub.io/api/news?id=e9ec116b37a3a23003cbb478cdd87e6a3ef7eff9a51617c6152aa2c15102d6e5",
         "publisher": "Yahoo",
         "title": "3 Large-Cap Stocks with Questionable Fundamentals"
+      },
+      {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=594a6961b8ed29dd49d8b2abdb28dc5d0cbf63af6bb68fecba41f27b864c5288",
+        "publisher": "Benzinga",
+        "title": "Here's How Much You Would Have Made Owning NXP Semiconductors Stock In The Last 15 Years"
       },
       {
         "date": "2026-05-23",
@@ -9398,16 +9404,10 @@
         "link": "https://finnhub.io/api/news?id=86c64e14d4c265f1516b605d4bc5eed4d6bf546dc7f9eda57b531c1f1b0c4d7c",
         "publisher": "Yahoo",
         "title": "Stocks Settle Higher on Iran Peace Hopes and Tech Strength"
-      },
-      {
-        "date": "2026-02-12",
-        "link": "https://finnhub.io/api/news?id=90c5bb2ecf739d70b2e14ebfa39259d8b3ceddea577644c44b573f7e4f5cca3c",
-        "publisher": "Benzinga",
-        "title": "Shares of semiconductor companies are trading lower amid overall market weakness as investors rotate out of the industry. Recent payroll economic data may impact future rate cuts as investors await Friday's CPI results."
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:22:21.050959",
+    "updated": "2026-05-25T22:48:19.669773",
     "upside_pct": null
   },
   "NXT": {
@@ -9446,7 +9446,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:22:25.354379",
+    "updated": "2026-05-25T22:48:23.788877",
     "upside_pct": null
   },
   "OCS": {
@@ -9617,7 +9617,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:22:47.132642",
+    "updated": "2026-05-25T22:48:28.079464",
     "upside_pct": null
   },
   "OLED": {
@@ -9719,6 +9719,18 @@
     "news": [
       {
         "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=85ee816126613567b82d8380661e22a97c262c12043a2fd8c098bc99772eb862",
+        "publisher": "Yahoo",
+        "title": "Mizuho Maintains an \u201cOutperform\u201d Rating on ON Semiconductor Corporation (ON)"
+      },
+      {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=8429ebbce4e4bfe898fd15d0324215ba1df1223585d52b8c43404307e9711406",
+        "publisher": "Yahoo",
+        "title": "1 S&P 500 Stock on Our Buy List and 2 We Question"
+      },
+      {
+        "date": "2026-05-25",
         "link": "https://finnhub.io/api/news?id=53f09331a4ea01aa4bfff583ed350a0c975a6eac2a050f1b39a80c9a14d5d4ff",
         "publisher": "Yahoo",
         "title": "S&P 500 Other Than AI Infrastructure Is Growing at 0%. Lance Roberts Warns What Happens if the AI Boom Stumbles."
@@ -9734,22 +9746,10 @@
         "link": "https://finnhub.io/api/news?id=89efa2845c73850ed991e4fec6c436e0c97cd6e059af7302a22b21cd7ed63030",
         "publisher": "Yahoo",
         "title": "onsemi, Texas Instruments, and Impinj Shares Are Soaring, What You Need To Know"
-      },
-      {
-        "date": "2026-05-23",
-        "link": "https://finnhub.io/api/news?id=7073d21f5932c4c23f5fa306625cc021b0867176e1b683d6a4178c40f3d57fce",
-        "publisher": "Yahoo",
-        "title": "Prediction: Why We See ON Semiconductor Hitting a New All-Time High This Year"
-      },
-      {
-        "date": "2026-05-22",
-        "link": "https://finnhub.io/api/news?id=e081541d5f4869ed307bc841b4e46e50cc65eeeedcf4a683dee720bff1f4b7e0",
-        "publisher": "Yahoo",
-        "title": "ON Semiconductor Corp. (ON) Is Up 9.60% in One Week: What You Should Know"
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:23:00.236536",
+    "updated": "2026-05-25T22:48:32.449101",
     "upside_pct": null
   },
   "ONDS": {
@@ -9932,7 +9932,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:23:17.656439",
+    "updated": "2026-05-25T22:48:36.812493",
     "upside_pct": null
   },
   "PAYC": {
@@ -10073,7 +10073,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:23:35.118204",
+    "updated": "2026-05-25T22:48:41.187344",
     "upside_pct": null
   },
   "PENN": {
@@ -10127,7 +10127,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:23:43.857058",
+    "updated": "2026-05-25T22:48:45.562544",
     "upside_pct": null
   },
   "PHAT": {
@@ -10174,7 +10174,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:23:48.211903",
+    "updated": "2026-05-25T22:48:49.938784",
     "upside_pct": null
   },
   "PI": {
@@ -10189,7 +10189,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:23:52.571686",
+    "updated": "2026-05-25T22:48:54.285094",
     "upside_pct": null
   },
   "PL": {
@@ -10393,7 +10393,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:24:10.079896",
+    "updated": "2026-05-25T22:48:58.643312",
     "upside_pct": null
   },
   "PRLB": {
@@ -10494,7 +10494,7 @@
     "n_analysts": null,
     "news": [],
     "price_target": null,
-    "updated": "2026-05-25T14:24:27.483990",
+    "updated": "2026-05-25T22:49:03.019291",
     "upside_pct": null
   },
   "PTON": {
@@ -10533,7 +10533,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:24:31.851043",
+    "updated": "2026-05-25T22:49:07.350909",
     "upside_pct": null
   },
   "PTRN": {
@@ -10665,7 +10665,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:24:49.330757",
+    "updated": "2026-05-25T22:49:11.732052",
     "upside_pct": null
   },
   "QLYS": {
@@ -10883,7 +10883,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:25:15.539421",
+    "updated": "2026-05-25T22:49:16.128965",
     "upside_pct": null
   },
   "RDWR": {
@@ -10943,7 +10943,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:25:24.217225",
+    "updated": "2026-05-25T22:49:20.466165",
     "upside_pct": null
   },
   "RIOT": {
@@ -11384,7 +11384,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:26:12.219365",
+    "updated": "2026-05-25T22:49:24.806978",
     "upside_pct": null
   },
   "SAH": {
@@ -11684,7 +11684,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:26:51.531448",
+    "updated": "2026-05-25T22:49:29.215413",
     "upside_pct": null
   },
   "SIMO": {
@@ -11846,37 +11846,37 @@
     "news": [
       {
         "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=ff72b475d4a59e4ef6605c8ee0ff49955f916d996b6d2611ab75853219b949ba",
+        "publisher": "Yahoo",
+        "title": "NBIS vs. SMCI: Which AI Infrastructure Stock is the Better Pick?"
+      },
+      {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=41945e4adedc8f224f0d0b94200f70346ff6f499f6f6cf6ac6bfee3628d3958d",
+        "publisher": "Yahoo",
+        "title": "SMCI vs. GOOGL: Which Stock is a Safer Bet in the AI Ecosystem?"
+      },
+      {
+        "date": "2026-05-25",
         "link": "https://finnhub.io/api/news?id=7ecf519d1ac27a8d55872ec439c02375f2839690c305bf923604f166e2d594c7",
         "publisher": "Yahoo",
         "title": "Super Micro Computer's Sales More Than Doubled Last Quarter. Here's Why I'd Still Stay Far Away From the Stock"
+      },
+      {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=8d19621e07a712e8652f2afce1a0117f591df83d8e5a10a93f0209ec81abd783",
+        "publisher": "Yahoo",
+        "title": "Option Volatility And Earnings Report For May 25-29"
       },
       {
         "date": "2026-05-24",
         "link": "https://finnhub.io/api/news?id=bd03582ae7c1394f28507e23fd4a1487dec14dfa8ca8d13055ad7dee3f23fc81",
         "publisher": "Yahoo",
         "title": "Can Super Micro (SMCI) Reframe Its AI Margin Story Amid Export-Control Scrutiny and Leadership Changes?"
-      },
-      {
-        "date": "2026-05-24",
-        "link": "https://finnhub.io/api/news?id=dc9fbc9bf2a7ee885560bef9dbe6f17c3931aa6addcefd2f1b482d7011b15fdb",
-        "publisher": "Yahoo",
-        "title": "Getty Images, Super Micro, and Cognex Stocks Trade Up, What You Need To Know"
-      },
-      {
-        "date": "2026-05-23",
-        "link": "https://finnhub.io/api/news?id=926b1a6ad70320eff14a73d43aaa5ba38b96bfc9568f68d99dfa5ddff7f75211",
-        "publisher": "Yahoo",
-        "title": "3 Growth Stocks to Stash"
-      },
-      {
-        "date": "2026-05-23",
-        "link": "https://finnhub.io/api/news?id=ee9094d3a25896d6cf9229724e943d1a4df96eed5ce23d2cb7ac5ed6e4c2cb49",
-        "publisher": "Yahoo",
-        "title": "Nvidia CEO calls for stricter compliance as Super Micro exports face scrutiny"
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:27:13.514649",
+    "updated": "2026-05-25T22:49:33.584422",
     "upside_pct": null
   },
   "SMTC": {
@@ -11915,7 +11915,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:27:17.683076",
+    "updated": "2026-05-25T22:49:37.990475",
     "upside_pct": null
   },
   "SMWB": {
@@ -11954,7 +11954,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:27:22.087338",
+    "updated": "2026-05-25T22:49:42.343231",
     "upside_pct": null
   },
   "SNOW": {
@@ -11993,7 +11993,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:27:26.412003",
+    "updated": "2026-05-25T22:49:46.667759",
     "upside_pct": null
   },
   "SNPS": {
@@ -12032,7 +12032,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:27:30.792539",
+    "updated": "2026-05-25T22:49:51.094115",
     "upside_pct": null
   },
   "SOFI": {
@@ -12295,7 +12295,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:27:52.592680",
+    "updated": "2026-05-25T22:49:55.412316",
     "upside_pct": null
   },
   "STAA": {
@@ -12412,7 +12412,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:28:05.718580",
+    "updated": "2026-05-25T22:49:59.772057",
     "upside_pct": null
   },
   "STGW": {
@@ -12598,7 +12598,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:28:31.895301",
+    "updated": "2026-05-25T22:50:04.123335",
     "upside_pct": null
   },
   "SYNA": {
@@ -12637,7 +12637,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:28:36.285203",
+    "updated": "2026-05-25T22:50:08.488697",
     "upside_pct": null
   },
   "TBLA": {
@@ -12715,6 +12715,12 @@
     "n_analysts": 13,
     "news": [
       {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=7ccf297727e9b42c3df820f87675bf781215f2d53c8565244e738295b4448380",
+        "publisher": "Benzinga",
+        "title": "10 Information Technology Stocks Whale Activity In Today's Session"
+      },
+      {
         "date": "2026-05-23",
         "link": "https://finnhub.io/api/news?id=d09811f49c093940387412a75f48affbf01f758ebabd07c829ec71f0215d6c33",
         "publisher": "Benzinga",
@@ -12737,16 +12743,10 @@
         "link": "https://finnhub.io/api/news?id=cec78da44d54a679fbc69c32930b5f2119402e63ab683b6f5d7ceff87dd7410f",
         "publisher": "SeekingAlpha",
         "title": "T1 Energy: AI Catalyst May Come From Monetizing 50 MW Of Power In Norway"
-      },
-      {
-        "date": "2026-05-20",
-        "link": "https://finnhub.io/api/news?id=443bf9d6f617e138580765de9a9b2f6a6ba4c356596e39a9986def00dd9325fe",
-        "publisher": "ChartMill",
-        "title": "Top movers in Wednesday's session"
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:28:53.701228",
+    "updated": "2026-05-25T22:50:12.822023",
     "upside_pct": null
   },
   "TEAD": {
@@ -13149,7 +13149,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:30:12.417819",
+    "updated": "2026-05-25T22:50:17.201881",
     "upside_pct": null
   },
   "TTGT": {
@@ -13188,7 +13188,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:30:17.864044",
+    "updated": "2026-05-25T22:50:21.576490",
     "upside_pct": null
   },
   "TTMI": {
@@ -13227,13 +13227,19 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:30:23.035684",
+    "updated": "2026-05-25T22:50:26.032064",
     "upside_pct": null
   },
   "TWLO": {
     "consensus": "Buy",
     "n_analysts": 36,
     "news": [
+      {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=0c7e0fe62cf69084f5195b3308be5e9763dacf05550714abe6c2567e99a272b7",
+        "publisher": "Yahoo",
+        "title": "Twilio (TWLO) Just Reclaimed the 20-Day Moving Average"
+      },
       {
         "date": "2026-05-21",
         "link": "https://finnhub.io/api/news?id=fb7743ed37cc1cb971f3dd9a8c8f10ec5697baa21db0a6b8a9b7e779120e6c6a",
@@ -13257,16 +13263,10 @@
         "link": "https://finnhub.io/api/news?id=dcb2777fd63c4bd283465df17bafe952209465f02b1f28194c83d5cc33e8071c",
         "publisher": "Yahoo",
         "title": "Bandwidth (BAND) Gets A Major Target Boost As Voice AI Opportunities Expand"
-      },
-      {
-        "date": "2026-05-19",
-        "link": "https://finnhub.io/api/news?id=50332d6af3f757b903930b284f6a8619b6d8a4f28f8a0e5c1c835985b9cc2476",
-        "publisher": "Yahoo",
-        "title": "1 Software Stock on Our Buy List and 2 We Avoid"
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:30:27.170067",
+    "updated": "2026-05-25T22:50:30.275156",
     "upside_pct": null
   },
   "U": {
@@ -13455,7 +13455,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:30:44.229318",
+    "updated": "2026-05-25T22:50:34.655728",
     "upside_pct": null
   },
   "UIS": {
@@ -13523,7 +13523,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:30:57.172922",
+    "updated": "2026-05-25T22:50:39.031414",
     "upside_pct": null
   },
   "UPLD": {
@@ -13538,7 +13538,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-22T22:53:18.842555",
+    "updated": "2026-05-25T22:50:43.421823",
     "upside_pct": null
   },
   "UPST": {
@@ -13754,7 +13754,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:31:37.049411",
+    "updated": "2026-05-25T22:50:47.805915",
     "upside_pct": null
   },
   "VERX": {
@@ -13972,7 +13972,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:32:03.243764",
+    "updated": "2026-05-25T22:50:52.108349",
     "upside_pct": null
   },
   "VLN": {
@@ -14011,7 +14011,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:32:07.155137",
+    "updated": "2026-05-25T22:50:56.458189",
     "upside_pct": null
   },
   "VRCA": {
@@ -14131,7 +14131,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:32:24.609181",
+    "updated": "2026-05-25T22:51:00.824311",
     "upside_pct": null
   },
   "VYX": {
@@ -14230,7 +14230,7 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:32:37.770458",
+    "updated": "2026-05-25T22:51:05.273486",
     "upside_pct": null
   },
   "WIX": {
@@ -14592,6 +14592,12 @@
     "n_analysts": 26,
     "news": [
       {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=c1808c8defe1aab1cd2ed5708ed2c5a68360988ff08413d86bbcad90fbbfedf1",
+        "publisher": "SeekingAlpha",
+        "title": "Tracking John Rogers' Ariel Investments Portfolio - Q1 2026 Update"
+      },
+      {
         "date": "2026-05-24",
         "link": "https://finnhub.io/api/news?id=f3345747e9fd8495fda4ad45f882a397bf169cd7fbff20cb29143e7bd09877a2",
         "publisher": "Yahoo",
@@ -14614,16 +14620,10 @@
         "link": "https://finnhub.io/api/news?id=c30f398a41587256f1ecc73e8579ab1e78cfa2aff12722ea3d344bb525563b7e",
         "publisher": "Yahoo",
         "title": "2 Reasons to Watch ZBRA and 1 to Stay Cautious"
-      },
-      {
-        "date": "2026-05-21",
-        "link": "https://finnhub.io/api/news?id=d8e12914499ff0d5b841d432e6239b2a02188e8181bcf4dbead3cc8373d47869",
-        "publisher": "SeekingAlpha",
-        "title": "Zebra Technologies Corporation (ZBRA) Presents at Wolfe Research 19th Annual Global Transportation & Industrials Conference Transcript"
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:33:16.954423",
+    "updated": "2026-05-25T22:51:09.576557",
     "upside_pct": null
   },
   "ZETA": {
@@ -14701,13 +14701,19 @@
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:33:21.314416",
+    "updated": "2026-05-25T22:51:13.996944",
     "upside_pct": null
   },
   "ZS": {
     "consensus": "Buy",
     "n_analysts": 58,
     "news": [
+      {
+        "date": "2026-05-25",
+        "link": "https://finnhub.io/api/news?id=93260370dbdcad78c176116da8b48f8e92c0a3425d0816b981ce81879a19df0b",
+        "publisher": "Yahoo",
+        "title": "As Zscaler Doubles Down on AI Security, ZS Stock Still Needs More to Justify Its Steep Valuation"
+      },
       {
         "date": "2026-05-25",
         "link": "https://finnhub.io/api/news?id=a1afc0f5f99c6c45cb834b7d2235034bdd551ab72bb5ad56d3f1eb6f43081bc6",
@@ -14731,16 +14737,10 @@
         "link": "https://finnhub.io/api/news?id=8c599ba5c932625ae5646dc9bb49d7b37bb098ead0d27fd6ff498532e5cf4548",
         "publisher": "Yahoo",
         "title": "Zscaler (ZS) Shares Skyrocket, What You Need To Know"
-      },
-      {
-        "date": "2026-05-23",
-        "link": "https://finnhub.io/api/news?id=f600961d031ab73add584c71aaaa2904e9fe9dc69b3452236c0d89e8f8c77f51",
-        "publisher": "Yahoo",
-        "title": "This Payments Stock Is Down 50%. One Fund Sold a $63 Million Stake Last Quarter"
       }
     ],
     "price_target": null,
-    "updated": "2026-05-25T14:33:25.688526",
+    "updated": "2026-05-25T22:51:18.292527",
     "upside_pct": null
   }
 }
